@@ -1,5 +1,9 @@
 package br.stalkersat.usuario;
 
+import java.util.ArrayList;
+
+import br.stalkersat.bem.Bem;
+import br.stalkersat.contato.Contato;
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.tipousuario.TipoUsuario;
 
@@ -12,6 +16,8 @@ public class Usuario {
 	private String login;
 	private String senha;
 	private TipoUsuario tipoUsuario;
+	private ArrayList<Contato> listaContatos;
+	private ArrayList<Bem> listaBens;
 	
 	public Usuario(String cpf, String nome, String login, String senha, TipoUsuario tipoUsuario, Endereco endereco) {
 		this.setCpf(cpf);
@@ -82,6 +88,22 @@ public class Usuario {
 
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+	
+	public void addContato (Contato contato){
+		this.listaContatos.add(contato);
+	}
+	
+	public ArrayList<Contato> listarContatos (){
+		return listaContatos;
+	}
+	
+	public void addBem(Bem bem){
+		this.listaBens.add(bem);
+	}
+	
+	public ArrayList<Bem> listarBens(){
+		return listaBens;
 	}
 
 	@Override
