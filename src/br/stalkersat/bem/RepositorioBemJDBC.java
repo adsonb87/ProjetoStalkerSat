@@ -1,12 +1,33 @@
 package br.stalkersat.bem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RepositorioBemJDBC implements IRepostorioBem{
+import br.stalkersat.conexao.Conexao;
 
+public class RepositorioBemJDBC implements IRepostorioBem{
+	
+	private Connection con;
+	
+	public RepositorioBemJDBC() {
+		try {
+			con = Conexao.getConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	@Override
 	public void cadastrar(Bem bem) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

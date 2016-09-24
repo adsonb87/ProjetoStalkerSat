@@ -4,11 +4,8 @@ import br.stalkersat.endereco.Endereco;
 
 public class Teste {
 
-	public static void main(String[] args) {
-		Endereco end = new Endereco(439, "complemento", "rua", "53.220-530");
+	public static void main(String[] args){
 		
-		System.out.println(end.formatarCep());
-
+		
 	}
-
 }
