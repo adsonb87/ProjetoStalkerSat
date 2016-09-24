@@ -27,6 +27,10 @@ public class ControladorLocalizacao {
 		repositorioLocalizacao.atualizar(localizacao);
 	}
 	
+	public Localizacao procurarLocalizacao (Integer id){
+		return repositorioLocalizacao.procurar(id);
+	}
+	
 	public boolean removerLocalizacao(Integer id){
 		return repositorioLocalizacao.remover(id);
 	}

@@ -27,6 +27,11 @@ public class ControladorContato {
 		repositorioContato.atualizar(contato);
 	}
 	
+	public Contato procurarContato (Integer id){
+		return repositorioContato.procurar(id);
+	}
+	
+	
 	public boolean removerContato (Integer id){
 		return repositorioContato.remover(id);
 	}

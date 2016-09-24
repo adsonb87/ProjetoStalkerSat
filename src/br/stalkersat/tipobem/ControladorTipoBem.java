@@ -27,6 +27,10 @@ public class ControladorTipoBem {
 		repositorioTipoBem.atualizar(tipoBem);
 	}
 	
+	public TipoBem procurarTipoBem (Integer id){
+		return repositorioTipoBem.procurar(id);
+	}
+	
 	public boolean removerTipoBem(Integer id){
 		return repositorioTipoBem.remover(id);
 	}

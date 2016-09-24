@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.stalkersat.fachada.Fachada;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -64,7 +67,7 @@ public class TelaLogin extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				fazerLogin();
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -107,7 +110,9 @@ public class TelaLogin extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 	
-	private void login(){
+	private void fazerLogin(){
+		Fachada fachada = Fachada.getInstance();
+		
 		
 	}
 	

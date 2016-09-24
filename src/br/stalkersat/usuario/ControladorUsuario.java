@@ -32,6 +32,10 @@ public class ControladorUsuario {
 		repositorioUsuario.atualizar(usuario);
 	}
 	
+	public Usuario procurarUsuario (Integer id){
+		return procurarUsuario(id);
+	}
+	
 	public boolean removerUsuario(Integer id){
 		return repositorioUsuario.remover(id);
 	}

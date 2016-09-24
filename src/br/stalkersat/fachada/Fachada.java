@@ -64,6 +64,10 @@ public class Fachada {
 		return controladorBem.removerBem(id);
 	}
 	
+	public Bem procurarBem (Integer id){
+		return procurarBem(id);
+	}
+	
 	public ArrayList<Bem> listarBens (){
 		return controladorBem.listarBens();
 	}
@@ -80,6 +84,10 @@ public class Fachada {
 	
 	public boolean removerContato (Integer id){
 		return controladorContato.removerContato(id);
+	}
+	
+	public Contato procurarContato (Integer id){
+		return controladorContato.procurarContato(id);
 	}
 	
 	public ArrayList<Contato> listarContato(){
@@ -123,6 +131,10 @@ public class Fachada {
 		return controladorLocalizacao.removerLocalizacao(id);
 	}
 	
+	public Localizacao procurarLocalizacao (Integer id){
+		return controladorLocalizacao.procurarLocalizacao(id);
+	}
+	
 	public ArrayList<Localizacao> listarLocalizacao(){
 		return controladorLocalizacao.listarLocalizacao();
 	}
@@ -139,6 +151,10 @@ public class Fachada {
 	
 	public boolean removerTipoBem(Integer id){
 		return controladorTipoBem.removerTipoBem(id);
+	}
+	
+	public TipoBem procurarTipoBem (Integer id){
+		return controladorTipoBem.procurarTipoBem(id);
 	}
 	
 	public ArrayList<TipoBem> listarTipoBem(){
@@ -159,6 +175,10 @@ public class Fachada {
 		return controladorTipoContato.removerTipoContato(id);
 	}
 	
+	public TipoContato procurarTipoContato (Integer id){
+		return controladorTipoContato.procurarTipoContato(id);
+	}
+	
 	public ArrayList<TipoContato> listarTipoContato(){
 		return controladorTipoContato.listarTipoContato();
 	}
@@ -177,6 +197,10 @@ public class Fachada {
 		return controladorTipoUsuario.removerTipoUsuario(id);
 	}
 	
+	public TipoUsuario procurarTipoUsuario (Integer id){
+		return controladorTipoUsuario.procurarTipoUsuario(id);
+	}
+	
 	public ArrayList<TipoUsuario> listarTipoUsuario(){
 		return controladorTipoUsuario.listarTipoUsuario();
 	}
@@ -189,6 +213,10 @@ public class Fachada {
 	
 	public void atualizarUsuario(Usuario usuario){
 		controladorUsuario.atualizarUsuario(usuario);
+	}
+	
+	public Usuario procurarUsuario (Integer id){
+		return controladorUsuario.procurarUsuario(id);
 	}
 	
 	public boolean removerUsuario(Integer id){

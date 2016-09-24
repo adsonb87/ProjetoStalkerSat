@@ -31,6 +31,10 @@ public class ControladorTipoUsuario {
 		repositorioTipoUsuario.atualizar(tipoUsuario);
 	}
 	
+	public TipoUsuario procurarTipoUsuario (Integer id){
+		return repositorioTipoUsuario.procurar(id);
+	}
+	
 	public boolean removerTipoUsuario(Integer id){
 		return repositorioTipoUsuario.remover(id);
 	}

@@ -29,6 +29,10 @@ public class ControladorTipoContato {
 		repositorioTipoContato.atualizar(tipoContato);
 	}
 	
+	public TipoContato procurarTipoContato (Integer id){
+		return repositorioTipoContato.procurar(id);
+	}
+	
 	public boolean removerTipoContato(Integer id){
 		return repositorioTipoContato.remover(id);
 	}
