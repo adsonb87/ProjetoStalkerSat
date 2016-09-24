@@ -4,11 +4,31 @@ import java.util.ArrayList;
 
 import br.stalkersat.bem.Bem;
 import br.stalkersat.bem.ControladorBem;
-import br.stalkersat.bem.RepositorioBemJDBC;
+import br.stalkersat.contato.Contato;
+import br.stalkersat.contato.ControladorContato;
+import br.stalkersat.endereco.ControladorEndereco;
+import br.stalkersat.endereco.Endereco;
+import br.stalkersat.localizacao.ControladorLocalizacao;
+import br.stalkersat.localizacao.Localizacao;
+import br.stalkersat.tipobem.ControladorTipoBem;
+import br.stalkersat.tipobem.TipoBem;
+import br.stalkersat.tipocontato.ControladorTipoContato;
+import br.stalkersat.tipocontato.TipoContato;
+import br.stalkersat.tipousuario.ControladorTipoUsuario;
+import br.stalkersat.tipousuario.TipoUsuario;
+import br.stalkersat.usuario.ControladorUsuario;
+import br.stalkersat.usuario.Usuario;
 
 public class Fachada {
 	
 	private ControladorBem controladorBem;
+	private ControladorContato controladorContato;
+	private ControladorEndereco controladorEndereco; 
+	private ControladorLocalizacao controladorLocalizacao;
+	private ControladorTipoBem controladorTipoBem;
+	private ControladorTipoContato controladorTipoContato;
+	private ControladorTipoUsuario controladorTipoUsuario;
+	private ControladorUsuario controladorUsuario;
 	
 	private static Fachada fachada;
 	
@@ -21,6 +41,13 @@ public class Fachada {
 	
 	private Fachada() {
 		controladorBem.getInstance();
+		controladorContato.getInstance();
+		controladorEndereco.getInstance();
+		controladorLocalizacao.getInstance();
+		controladorTipoBem.getInstance();
+		controladorTipoContato.getInstance();
+		controladorTipoUsuario.getInstance();
+		controladorUsuario.getInstance();
 	}
 	
 	//Bem 
@@ -39,5 +66,136 @@ public class Fachada {
 	
 	public ArrayList<Bem> listarBens (){
 		return controladorBem.listarBens();
+	}
+	
+	//Contato
+	
+	public void cadastrarContato(Contato contato){
+		controladorContato.cadastrarContato(contato);
+	}
+	
+	public void atualizarContato(Contato contato){
+		controladorContato.atualizarContato(contato);
+	}
+	
+	public boolean removerContato (Integer id){
+		return controladorContato.removerContato(id);
+	}
+	
+	public ArrayList<Contato> listarContato(){
+		return controladorContato.listarContato();
+	}
+	
+	// endereco
+	
+
+	public void cadastrarEndereco (Endereco endereco){
+		controladorEndereco.cadastrarEndereco(endereco);
+	}
+	
+	public void atualizarEndereco (Endereco endereco){
+		controladorEndereco.atualizarEndereco(endereco);
+	}
+	
+	public boolean removerEndereco (Integer id){
+		return controladorEndereco.removerEndereco(id);
+	}
+	
+	public Endereco procurarEndereco (Integer id){
+		return controladorEndereco.procurarEndereco(id);
+	}
+	
+	public ArrayList<Endereco> listarEndereco(){
+		return controladorEndereco.listarEndereco();
+	}
+	
+	// localizacao
+	
+	public void cadastrarLocalizacao(Localizacao localizacao){
+		controladorLocalizacao.cadastrarLocalizacao(localizacao);
+	}
+	
+	public void atualizarLocalizacao(Localizacao localizacao){
+		controladorLocalizacao.atualizarLocalizacao(localizacao);
+	}
+	
+	public boolean removerLocalizacao(Integer id){
+		return controladorLocalizacao.removerLocalizacao(id);
+	}
+	
+	public ArrayList<Localizacao> listarLocalizacao(){
+		return controladorLocalizacao.listarLocalizacao();
+	}
+	
+	// tipo bem
+	
+	public void cadastrarTipoBem(TipoBem tipoBem){
+		controladorTipoBem.cadastrarTipoBem(tipoBem);
+	}
+	
+	public void atualizarTipoBem(TipoBem tipoBem){
+		controladorTipoBem.atualizarTipoBem(tipoBem);
+	}
+	
+	public boolean removerTipoBem(Integer id){
+		return controladorTipoBem.removerTipoBem(id);
+	}
+	
+	public ArrayList<TipoBem> listarTipoBem(){
+		return controladorTipoBem.listarTipoBem();
+	}
+	
+	// tipo contato
+	
+	public void cadastrarTipoContato(TipoContato tipoContato){
+		controladorTipoContato.cadastrarTipoContato(tipoContato);
+	}
+	
+	public void atualizarTipoContato(TipoContato tipoContato){
+		controladorTipoContato.atualizarTipoContato(tipoContato);
+	}
+	
+	public boolean removerTipoContato(Integer id){
+		return controladorTipoContato.removerTipoContato(id);
+	}
+	
+	public ArrayList<TipoContato> listarTipoContato(){
+		return controladorTipoContato.listarTipoContato();
+	}
+	
+	// tipo usuario
+	
+	public void cadastrarTipoUsuario(TipoUsuario tipoUsuario){
+		controladorTipoUsuario.cadastrarTipoUsuario(tipoUsuario);
+	}
+	
+	public void atualizarTipoUsuario (TipoUsuario tipoUsuario){
+		controladorTipoUsuario.atualizarTipoUsuario(tipoUsuario);
+	}
+	
+	public boolean removerTipoUsuario(Integer id){
+		return controladorTipoUsuario.removerTipoUsuario(id);
+	}
+	
+	public ArrayList<TipoUsuario> listarTipoUsuario(){
+		return controladorTipoUsuario.listarTipoUsuario();
+	}
+	
+	// usuario
+	
+	public void cadastrarUsuario(Usuario usuario){
+		controladorUsuario.cadastrarUsuario(usuario);
+	}
+	
+	public void atualizarUsuario(Usuario usuario){
+		controladorUsuario.atualizarUsuario(usuario);
+	}
+	
+	public boolean removerUsuario(Integer id){
+		return controladorUsuario.removerUsuario(id);
+	}
+	
+	public ArrayList<Usuario> listarUsuario(){
+		return controladorUsuario.listarUsuario();
 	}
 }
