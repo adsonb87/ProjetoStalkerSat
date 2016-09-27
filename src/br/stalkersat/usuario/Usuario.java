@@ -27,6 +27,14 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 		this.endereco = endereco;
 	}
+	
+	public Usuario(String cpf, String nome, String login, String senha, TipoUsuario tipoUsuario) {
+		this.setCpf(cpf);
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.tipoUsuario = tipoUsuario;
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;

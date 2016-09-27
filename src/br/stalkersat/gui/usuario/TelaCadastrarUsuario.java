@@ -37,9 +37,9 @@ public class TelaCadastrarUsuario extends JPanel {
 	private JTextField telefoneTf;
 	private JTextField chassiTf;
 	private JTextField placaTf;
-	private JComboBox tipoUsuarioCB = new JComboBox();
-	private JComboBox tipoContatoCB = new JComboBox();
-	private JComboBox tipoBemCB = new JComboBox();
+	private JComboBox tipoUsuarioCB;
+	private JComboBox tipoContatoCB;
+	private JComboBox tipoBemCB;
 
 	/**
 	 * Create the panel.
@@ -55,7 +55,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		
 		JLabel lblSenha = new JLabel("Senha:");
 		
-		
+		tipoUsuarioCB = new JComboBox();
 		tipoUsuarioCB.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Usuario"}));
 		
 		
@@ -71,7 +71,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		
-		
+		tipoContatoCB = new JComboBox();
 		tipoContatoCB.setModel(new DefaultComboBoxModel(new String[] {"Celular", "Fixo"}));
 		
 		JLabel lblChassi = new JLabel("Chassi:");
@@ -80,7 +80,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		
 		JLabel lblTipoDoBem = new JLabel("Tipo do bem:");
 		
-		
+		tipoBemCB = new JComboBox();
 		tipoBemCB.setModel(new DefaultComboBoxModel(new String[] {"Carro", "Moto"}));
 		
 		nomeTf = new JTextField();
