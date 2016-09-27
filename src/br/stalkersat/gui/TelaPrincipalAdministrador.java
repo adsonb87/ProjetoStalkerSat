@@ -14,6 +14,9 @@ import javax.swing.border.EmptyBorder;
 
 import br.stalkersat.gui.usuario.TelaAtualizarUsuario;
 import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
+import br.stalkersat.gui.usuario.TelaListarUsuario;
+import br.stalkersat.gui.usuario.TelaProcurarUsuario;
+import br.stalkersat.gui.usuario.TelaRemoverUsuario;
 
 public class TelaPrincipalAdministrador extends JFrame {
 
@@ -48,41 +51,73 @@ public class TelaPrincipalAdministrador extends JFrame {
 		JMenu menu = new JMenu("Usu\u00E1rio");
 		menuBar.add(menu);
 		
-		JMenuItem menuItem = new JMenuItem("Cadastrar");
-		menuItem.addActionListener(new ActionListener() {
+		JFrame frame = new JFrame();
+		
+		JMenuItem mnCadastrarUsuario = new JMenuItem("Cadastrar");
+		mnCadastrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastrarUsuario t = new TelaCadastrarUsuario();
+				TelaCadastrarUsuario tCadastrarUsuario = new TelaCadastrarUsuario();
 
-				JFrame frame = new JFrame();
 				frame.setBounds(100, 100, 450, 300);
-				frame.setContentPane(t);
+				frame.setContentPane(tCadastrarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
 			}
 		});
-		menu.add(menuItem);
+		menu.add(mnCadastrarUsuario);
 		
-		JMenuItem menuItem_1 = new JMenuItem("Atualizar");
-		menuItem_1.addActionListener(new ActionListener() {
+		JMenuItem mnAtualizarUsuario = new JMenuItem("Atualizar");
+		mnAtualizarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaAtualizarUsuario t2 = new TelaAtualizarUsuario();
-				JFrame frame = new JFrame();
+				TelaAtualizarUsuario tAtualizarUsuario = new TelaAtualizarUsuario();
+				
 				frame.setBounds(100, 100, 450, 300);
-				frame.setContentPane(t2);
+				frame.setContentPane(tAtualizarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
 			}
 		});
-		menu.add(menuItem_1);
+		menu.add(mnAtualizarUsuario);
 		
-		JMenuItem menuItem_2 = new JMenuItem("Procurar");
-		menu.add(menuItem_2);
+		JMenuItem mnProcurarUsuario = new JMenuItem("Procurar");
+		mnProcurarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaProcurarUsuario tProcurarUsuario = new TelaProcurarUsuario();
+				
+				frame.setBounds(100, 100, 450, 300);
+				frame.setContentPane(tProcurarUsuario);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+			}
+		});
 		
-		JMenuItem menuItem_3 = new JMenuItem("Remover");
-		menu.add(menuItem_3);
+		menu.add(mnProcurarUsuario);
 		
-		JMenuItem menuItem_4 = new JMenuItem("Listar");
-		menu.add(menuItem_4);
+		JMenuItem mnRemoverUsuario = new JMenuItem("Remover");
+		mnRemoverUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaRemoverUsuario tRemoverUsuario = new TelaRemoverUsuario();
+				
+				frame.setBounds(100, 100, 450, 300);
+				frame.setContentPane(tRemoverUsuario);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+			}
+		});
+		menu.add(mnRemoverUsuario);
+		
+		JMenuItem mnListarUsuario = new JMenuItem("Listar");
+		mnListarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaListarUsuario tListarUsuario = new TelaListarUsuario();
+				
+				frame.setBounds(100, 100, 450, 300);
+				frame.setContentPane(tListarUsuario);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+			}
+		});
+		menu.add(mnListarUsuario);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

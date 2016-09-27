@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
+import javax.swing.ImageIcon;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaLogin {
 
@@ -69,24 +71,31 @@ public class TelaLogin {
 				fazerLogin();
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\adson\\Desktop\\Sem t\u00EDtulo.png"));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblSenha)
 								.addComponent(lblLogin))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-								.addComponent(loginTF))
-							.addContainerGap(101, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(btnLogin)
-							.addGap(167))))
+								.addComponent(loginTF, 275, 275, 275))
+							.addPreferredGap(ComponentPlacement.RELATED, 101, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(99)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(182)
+							.addComponent(btnLogin)))
+					.addContainerGap(101, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -101,7 +110,9 @@ public class TelaLogin {
 						.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnLogin)
-					.addContainerGap(157, Short.MAX_VALUE))
+					.addGap(28)
+					.addComponent(lblNewLabel)
+					.addContainerGap(79, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
