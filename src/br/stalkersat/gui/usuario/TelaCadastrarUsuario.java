@@ -295,9 +295,9 @@ public class TelaCadastrarUsuario extends JPanel {
 		TipoUsuario tipoUsuario = null;
 		
 		if(tipoUsuarioCB.getSelectedItem().equals("Usuario")){
-			tipoUsuario = fachada.procurarTipoUsuario(1);
-		}else if(tipoUsuarioCB.getSelectedItem().equals("Administrador")){
 			tipoUsuario = fachada.procurarTipoUsuario(2);
+		}else if(tipoUsuarioCB.getSelectedItem().equals("Administrador")){
+			tipoUsuario = fachada.procurarTipoUsuario(1);
 		}
 		
 		Usuario user = new Usuario(cpfTf.getText(), nomeTf.getText(), loginTf.getText(), senhaTf.getText(), tipoUsuario, end);
@@ -321,9 +321,9 @@ public class TelaCadastrarUsuario extends JPanel {
 		TipoBem tipoBem = null;
 		
 		if(tipoBemCB.getSelectedItem().equals("Moto")){
-			tipoBem = fachada.procurarTipoBem(1);
-		}else if(tipoContatoCB.getSelectedItem().equals("Celular")){
 			tipoBem = fachada.procurarTipoBem(2);
+		}else if(tipoContatoCB.getSelectedItem().equals("Carro")){
+			tipoBem = fachada.procurarTipoBem(1);
 		}
 		
 		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), tipoBem, user);
