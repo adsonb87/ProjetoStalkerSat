@@ -67,19 +67,46 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 
 	@Override
 	public void atualizar(TipoUsuario tipoUsuario) {
-		// TODO Auto-generated method stub
+		String sql = "update tipo_do_usuario set tipo = ? where idTipoUsuario = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setString(1, tipoUsuario.getTipo());
+			pStmnt.setInt(2, tipoUsuario.getIdTipoUsuario());
+			pStmnt.executeUpdate();
+			pStmnt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public boolean remover(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "delete from tipo_do_usuario where idTipoUsuario = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			pStmnt.executeUpdate();
+			pStmnt.close();
+			con.close();
+			
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return false;
 	}
 
 	@Override
 	public boolean existe(String tipo) {
-		String sql = "select * from bem";
+		String sql = "select * from tipo_do_usuario";
 		
 		try {
 			PreparedStatement pStmnt = con.prepareStatement(sql);
@@ -100,8 +127,29 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 
 	@Override
 	public ArrayList<TipoUsuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TipoUsuario> lista = new ArrayList<>();
+				
+		String sql = "select * from tipo_do_usuario";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				TipoUsuario tipoUsuario = new TipoUsuario(resultSet.getInt(1), resultSet.getString(2));
+				lista.add(tipoUsuario);
+			}
+			
+			pStmnt.close();
+			con.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 
 }

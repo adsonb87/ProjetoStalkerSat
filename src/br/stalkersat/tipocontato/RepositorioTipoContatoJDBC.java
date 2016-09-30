@@ -1,20 +1,21 @@
-package br.stalkersat.tipobem;
+package br.stalkersat.tipocontato;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.print.DocFlavor.READER;
+import javax.naming.spi.DirStateFactory.Result;
 
 import br.stalkersat.conexao.Conexao;
 
-public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
+public class RepositorioTipoContatoJDBC implements IRepositorioTipoContato{
 	
 	private Connection con;
 	
-	public RepositorioTipoBemJDBC() {
+	public RepositorioTipoContatoJDBC() {
 		try {
 			con = Conexao.getConnection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -24,13 +25,13 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 	}
 	
 	@Override
-	public void cadastrar(TipoBem tipoBem) {
-		if(!existe(tipoBem.getTipo())){
-			String sql = "insert into tipo_do_bem (tipo) values (?)";
+	public void cadastrar(TipoContato tipoContato) {
+		if(!existe(tipoContato.getTipo())){
+			String sql = "insert into tipo_do_contato (tipo) values (?)";
 			
 			try {
 				PreparedStatement pStmnt = con.prepareStatement(sql);
-				pStmnt.setString(1, tipoBem.getTipo());
+				pStmnt.setString(1, tipoContato.getTipo());
 				pStmnt.execute();
 				pStmnt.close();
 				con.close();
@@ -39,18 +40,17 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@Override
-	public void atualizar(TipoBem tipoBem) {
-		String sql = "update tipo_do_bem set tipo = ? where idTipoBem = ?";
-		
-		if(existe(tipoBem.getTipo())){
+	public void atualizar(TipoContato tipoContato) {
+		if(existe(tipoContato.getTipo())){
+			String sql = "update tipo_do_contato set tipo = ? where idTipoContato = ?";
+			
 			try {
 				PreparedStatement pStmnt = con.prepareStatement(sql);
-				pStmnt.setString(1, tipoBem.getTipo());
-				pStmnt.setInt(2, tipoBem.getIdTipoBem());
+				pStmnt.setString(1, tipoContato.getTipo());
+				pStmnt.setInt(2, tipoContato.getIdTipoContato());
 				pStmnt.executeUpdate();
 				pStmnt.close();
 				con.close();
@@ -58,13 +58,14 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 		
 	}
 
 	@Override
-	public TipoBem procurar(Integer id) {
-		String sql = "select * from tipo_do_bem where idTipoBem = ?";
+	public TipoContato procurar(Integer id) {
+		String sql = "select * from tipo_do_contato where idTipoContato = ?";
 		
 		try {
 			PreparedStatement pStmnt = con.prepareStatement(sql);
@@ -72,45 +73,47 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 			ResultSet resultSet = pStmnt.executeQuery();
 			
 			if(resultSet.next()){
-				return new TipoBem(resultSet.getInt(1), resultSet.getString(2));
+				return new TipoContato(resultSet.getInt(1), resultSet.getString(2));
 			}
 			
 			pStmnt.close();
-			con.close();
 			resultSet.close();
+			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		return null;
 	}
 
 	@Override
 	public boolean remover(Integer id) {
-		String sql = "delete from tipo_do_bem where idTipoBem = ?";
+		String sql = "delete from tipo_do_contato where idTipoContato = ?";
 		
-		try {
+		 try {
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			pStmnt.executeUpdate();
 			pStmnt.close();
 			con.close();
+			
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 
 		return false;
 	}
 
 	@Override
 	public boolean existe(String tipo) {
-		String sql = "select * from tipo_do_bem";
+		String sql = "select * from tipo_do_contato";
 		
 		try {
-			PreparedStatement pStmnt = con.prepareStatement(sql);
+			PreparedStatement  pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
 			
@@ -120,8 +123,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 				}
 			}
 			
-			resultSet.close();
 			pStmnt.close();
+			resultSet.close();
 			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -131,22 +134,23 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 	}
 
 	@Override
-	public ArrayList<TipoBem> listar() {
-		ArrayList<TipoBem> lista = new ArrayList<>();
+	public ArrayList<TipoContato> listar() {
+		ArrayList<TipoContato> lista = new ArrayList<>();
 		
-		String sql = "select * from tipo_do_bem";
+		String sql = "select * from tipo_do_contato";
 		
 		try {
-			PreparedStatement pStmnt= con.prepareStatement(sql);
+			PreparedStatement pStatement = con.prepareStatement(sql);
 			
-			ResultSet resultSet = pStmnt.executeQuery();
+			ResultSet resultSet = pStatement.executeQuery();
 			
 			while(resultSet.next()){
-				TipoBem tipoBem = new TipoBem(resultSet.getInt(1), resultSet.getString(2));
+				TipoContato tipoContato = new TipoContato(resultSet.getInt(1), resultSet.getString(2));
 				
-				lista.add(tipoBem);
+				lista.add(tipoContato);
 			}
-			pStmnt.close();
+			
+			pStatement.close();
 			con.close();
 			resultSet.close();
 		} catch (SQLException e) {

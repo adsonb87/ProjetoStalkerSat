@@ -18,7 +18,7 @@ public class ControladorTipoContato {
 	}
 	
 	private ControladorTipoContato() {
-		repositorioTipoContato = new RepositorioTipoContato();
+		repositorioTipoContato = new RepositorioTipoContatoJDBC();
 	}
 	
 	public void cadastrarTipoContato(TipoContato tipoContato){

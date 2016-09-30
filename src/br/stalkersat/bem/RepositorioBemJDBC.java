@@ -57,7 +57,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 	@Override
 	public void atualizar(Bem bem) {
 		if(existe(bem.getChassi())){
-			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBem = ?";
+			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBem = ? where idBem = ?";
 			
 			try {
 				PreparedStatement pStmnt = con.prepareStatement(sql);
@@ -65,6 +65,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 				pStmnt.setString(2, bem.getChassi());
 				pStmnt.setString(3, bem.getPlaca());
 				pStmnt.setInt(4, bem.getTipoBem().getIdTipoBem());
+				pStmnt.setInt(5, bem.getIdBem());
 				pStmnt.executeUpdate();
 				pStmnt.close();
 				con.close();
