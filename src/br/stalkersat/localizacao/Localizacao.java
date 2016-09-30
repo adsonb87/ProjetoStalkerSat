@@ -12,6 +12,16 @@ public class Localizacao {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	public Localizacao(Integer id, String latitude, String longitude) {
+		this.idLocalizacao = id;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	
+	public Localizacao() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getIdLocalizacao() {
 		return idLocalizacao;
@@ -39,7 +49,7 @@ public class Localizacao {
 
 	@Override
 	public String toString() {
-		return "Localizacao [idLocalizacao=" + idLocalizacao + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+		return "Localizacao [idLocalizacao=" + idLocalizacao + ", latitude=" + latitude + ", longitude=" + longitude + "]\n";
 	}
 	
 	

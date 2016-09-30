@@ -8,7 +8,7 @@ public interface IRepositorioUsuario {
 	public Usuario procurar(Integer id);
 	public void atualizar (Usuario usuario);
 	public boolean remover (Integer id);
-	public boolean existe(Integer id);
+	public boolean existe(String cpf);
 	public ArrayList<Usuario> listar();
 	
 }

@@ -44,9 +44,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 
 	@Override
 	public void atualizar(TipoBem tipoBem) {
+		if(existe(tipoBem.getTipo())){
 		String sql = "update tipo_do_bem set tipo = ? where idTipoBem = ?";
 		
-		if(existe(tipoBem.getTipo())){
 			try {
 				PreparedStatement pStmnt = con.prepareStatement(sql);
 				pStmnt.setString(1, tipoBem.getTipo());

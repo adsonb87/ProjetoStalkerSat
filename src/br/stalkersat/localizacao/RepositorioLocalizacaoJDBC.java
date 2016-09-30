@@ -1,43 +1,139 @@
 package br.stalkersat.localizacao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
+import javax.naming.spi.DirStateFactory.Result;
 
+import br.stalkersat.conexao.Conexao;
+
+public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
+	
+	private Connection con;
+	
+	public RepositorioLocalizacaoJDBC() {
+		try {
+			con = Conexao.getConnection();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void cadastrar(Localizacao localizacao) {
-		// TODO Auto-generated method stub
+		String sql = "insert into localizacao (latitude, longitude) values (?,?)";
 		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setString(1, localizacao.getLatitude());
+			pStmnt.setString(2, localizacao.getLongitude());
+			pStmnt.execute();
+			pStmnt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void atualizar(Localizacao localizacao) {
-		// TODO Auto-generated method stub
+		String sql = "udate localizacao set latitude = ?, longitude = ? where idLocalizaco = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setString(1, localizacao.getLatitude());
+			pStmnt.setString(2, localizacao.getLongitude());
+			pStmnt.setInt(3, localizacao.getIdLocalizacao());
+			pStmnt.executeUpdate();
+			pStmnt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public Localizacao procurar(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "select * from localizacao where idLocalizacao = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			if(resultSet.next()){
+				return new Localizacao(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
+			}
+			
+			pStmnt.close();
+			con.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public boolean remover(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "delete from localizacao where idLocalizacao = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			pStmnt.executeUpdate();
+			
+			pStmnt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean existe(Integer id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ArrayList<Localizacao> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Localizacao> lista = new ArrayList<>();
+		
+		String sql = "select * from localizacao";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				Localizacao localizacao = new Localizacao(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
+				
+				lista.add(localizacao);
+			}
+			
+			pStmnt.close();
+			con.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 
 }
