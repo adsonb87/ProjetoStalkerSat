@@ -8,6 +8,15 @@ public class TipoBem {
 	public TipoBem(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public TipoBem(Integer id, String tipo) {
+		this.idTipoBem = id;
+		this.tipo = tipo;
+	}
+	
+	public TipoBem() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getIdTipoBem() {
 		return idTipoBem;

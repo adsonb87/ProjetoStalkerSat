@@ -1,43 +1,156 @@
 package br.stalkersat.tipobem;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
+import javax.print.DocFlavor.READER;
 
+import br.stalkersat.conexao.Conexao;
+
+public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
+	
+	private Connection con;
+	
+	public RepositorioTipoBemJDBC() {
+		try {
+			con = Conexao.getConnection();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void cadastrar(TipoBem tipoBem) {
-		// TODO Auto-generated method stub
+		if(!existe(tipoBem.getTipo())){
+			String sql = "insert into tipo_do_bem (tipo) values (?)";
+			
+			try {
+				PreparedStatement pStmnt = con.prepareStatement(sql);
+				pStmnt.setString(1, tipoBem.getTipo());
+				pStmnt.execute();
+				pStmnt.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
 	@Override
 	public void atualizar(TipoBem tipoBem) {
-		// TODO Auto-generated method stub
+		String sql = "update tipo_do_bem set idTipoBem = ?, tipo = ?";
+		
+		if(existe(tipoBem.getTipo())){
+			try {
+				PreparedStatement pStmnt = con.prepareStatement(sql);
+				pStmnt.setInt(1, tipoBem.getIdTipoBem());
+				pStmnt.setString(2, tipoBem.getTipo());
+				pStmnt.executeUpdate();
+				pStmnt.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
 	@Override
 	public TipoBem procurar(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "select * from tipo_do_bem";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				if(resultSet.getInt(1) == id){
+					TipoBem tipoBem = new TipoBem(resultSet.getInt(1), resultSet.getString(2));
+					
+					return tipoBem;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public boolean remover(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "delete from tipo_do_bem where idTipoBem = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			pStmnt.executeUpdate();
+			pStmnt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean existe(Integer id) {
-		// TODO Auto-generated method stub
+	public boolean existe(String tipo) {
+		String sql = "select * from tipo_do_bem";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				if(resultSet.getString(2).equalsIgnoreCase(tipo)){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public ArrayList<TipoBem> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TipoBem> lista = new ArrayList<>();
+		
+		String sql = "select * from tipo_do_bem";
+		
+		try {
+			PreparedStatement pStmnt= con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				TipoBem tipoBem = new TipoBem(resultSet.getInt(1), resultSet.getString(2));
+				
+				lista.add(tipoBem);
+			}
+			pStmnt.close();
+			con.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 
 }

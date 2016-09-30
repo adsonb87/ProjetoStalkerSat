@@ -35,6 +35,10 @@ public class Usuario {
 		this.senha = senha;
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;

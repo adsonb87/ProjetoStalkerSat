@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import javax.naming.spi.DirStateFactory.Result;
 
 import br.stalkersat.conexao.Conexao;
+import br.stalkersat.tipobem.RepositorioTipoBemJDBC;
+import br.stalkersat.tipobem.TipoBem;
+import br.stalkersat.usuario.RepositorioUsuarioJDBC;
+import br.stalkersat.usuario.Usuario;
 
 public class RepositorioBemJDBC implements IRepostorioBem{
 	
@@ -29,30 +33,95 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 	
 	@Override
 	public void cadastrar(Bem bem) {
-		
+		if(!existe(bem.getChassi())){
+			String sql = "insert into bem (idUsuarioFk, chassi, placa, idTipoBemFk) values (?,?,?,?)";
+			
+			try {
+				PreparedStatement pStmnt = con.prepareStatement(sql);
+				pStmnt.setInt(1, bem.getUsuario().getIdUsuario());
+				pStmnt.setString(2, bem.getChassi());
+				pStmnt.setString(3, bem.getPlaca());
+				pStmnt.setInt(4, bem.getTipoBem().getIdTipoBem());
+				pStmnt.execute();
+				con.close();
+				pStmnt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
 	}
 
 	@Override
 	public void atualizar(Bem bem) {
-		// TODO Auto-generated method stub
+		if(existe(bem.getChassi())){
+			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBem = ?";
+			
+			try {
+				PreparedStatement pStmnt = con.prepareStatement(sql);
+				pStmnt.setInt(1, bem.getUsuario().getIdUsuario());
+				pStmnt.setString(2, bem.getChassi());
+				pStmnt.setString(3, bem.getPlaca());
+				pStmnt.setInt(4, bem.getTipoBem().getIdTipoBem());
+				pStmnt.executeUpdate();
+				pStmnt.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
 	@Override
 	public Bem procurar(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "select * from bem where idBem = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			if(resultSet.next()){
+				return new Bem(resultSet.getInt(1), resultSet.getString(3), resultSet.getString(4), new RepositorioTipoBemJDBC().procurar(resultSet.getInt(5)), new RepositorioUsuarioJDBC().procurar(resultSet.getInt(2)));
+			}
+			
+			pStmnt.close();
+			resultSet.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public boolean remover(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "delete from bem where idBem = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			pStmnt.executeUpdate();
+			pStmnt.close();
+			con.close();
+			
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean existe(Integer id) {
+	public boolean existe(String chassi) {
 		String sql = "select * from bem";
 		
 		try {
@@ -60,7 +129,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			ResultSet rSet = pStatement.executeQuery();
 			
 			while (rSet.next()){
-				if(rSet.getInt(1) == id){
+				if(rSet.getString("chassi").equalsIgnoreCase(chassi)){
 					return true;
 				}
 			}
@@ -78,8 +147,36 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 
 	@Override
 	public ArrayList<Bem> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Bem> listaBem = new ArrayList<>();
+		
+		String sql = "select * from bem";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			while(resultSet.next()){
+				Bem bem = new Bem();
+				
+				bem.setIdBem(resultSet.getInt(1));
+				bem.setChassi(resultSet.getString(3));
+				bem.setPlaca(resultSet.getString(4));
+				bem.setUsuario(new RepositorioUsuarioJDBC().procurar(resultSet.getInt(2)));
+				bem.setTipoBem(new RepositorioTipoBemJDBC().procurar(resultSet.getInt(5)));
+				
+				listaBem.add(bem);
+			}
+			
+			pStmnt.close();
+			con.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listaBem;
 	}
 
 }

@@ -8,6 +8,6 @@ public interface IRepositorioTipoUsuario {
 	public TipoUsuario procurar(Integer id);
 	public void atualizar (TipoUsuario tipoUsuario);
 	public boolean remover (Integer id);
-	public boolean existe (Integer id);
+	public boolean existe (String tipo);
 	public ArrayList<TipoUsuario> listar();
 }

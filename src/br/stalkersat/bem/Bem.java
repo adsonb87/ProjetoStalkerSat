@@ -19,6 +19,18 @@ public class Bem {
 		this.tipoBem = tipoBem;
 		this.usuario = usuario;
 	}
+		
+	public Bem(Integer id, String chassi, String placa, TipoBem tipoBem, Usuario usuario) {
+		this.idBem = id;
+		this.chassi = chassi;
+		this.placa = placa;
+		this.tipoBem = tipoBem;
+		this.usuario = usuario;
+	}
+	
+	public Bem() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getIdBem() {
 		return idBem;
@@ -71,7 +83,7 @@ public class Bem {
 	@Override
 	public String toString() {
 		return "Bem [idBem=" + idBem + ", usuario=" + usuario + ", chassi=" + chassi + ", placa=" + placa + ", tipoBem="
-				+ tipoBem + "]";
+				+ tipoBem.getTipo() + "]\n";
 	}
 	
 	

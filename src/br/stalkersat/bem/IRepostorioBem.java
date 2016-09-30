@@ -9,6 +9,6 @@ public interface IRepostorioBem {
 	public void atualizar (Bem bem);
 	public Bem procurar (Integer id);
 	public boolean remover (Integer id);
-	public boolean existe (Integer id);
+	public boolean existe (String chassi);
 	public ArrayList<Bem> listar ();
 }
