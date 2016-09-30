@@ -17,6 +17,7 @@ import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
 
 public class TelaLogin {
 
@@ -52,6 +53,7 @@ public class TelaLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp2.png"));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -73,7 +75,7 @@ public class TelaLogin {
 		});
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\adson\\Desktop\\Sem t\u00EDtulo.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -87,15 +89,14 @@ public class TelaLogin {
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-								.addComponent(loginTF, 275, 275, 275))
-							.addPreferredGap(ComponentPlacement.RELATED, 101, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(99)
-							.addComponent(lblNewLabel))
+								.addComponent(loginTF, 275, 275, 275)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(182)
-							.addComponent(btnLogin)))
-					.addContainerGap(101, Short.MAX_VALUE))
+							.addComponent(btnLogin))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(42)
+							.addComponent(lblNewLabel)))
+					.addContainerGap(57, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -110,9 +111,9 @@ public class TelaLogin {
 						.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnLogin)
-					.addGap(28)
+					.addGap(46)
 					.addComponent(lblNewLabel)
-					.addContainerGap(79, Short.MAX_VALUE))
+					.addContainerGap(46, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

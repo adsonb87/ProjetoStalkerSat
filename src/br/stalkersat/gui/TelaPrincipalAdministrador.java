@@ -17,6 +17,11 @@ import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.gui.usuario.TelaListarUsuario;
 import br.stalkersat.gui.usuario.TelaProcurarUsuario;
 import br.stalkersat.gui.usuario.TelaRemoverUsuario;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipalAdministrador extends JFrame {
 
@@ -42,6 +47,7 @@ public class TelaPrincipalAdministrador extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipalAdministrador() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp2.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
@@ -120,8 +126,25 @@ public class TelaPrincipalAdministrador extends JFrame {
 		menu.add(mnListarUsuario);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(39)
+					.addComponent(lblNewLabel)
+					.addContainerGap(50, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(72)
+					.addComponent(lblNewLabel)
+					.addContainerGap(93, Short.MAX_VALUE))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
-
 }

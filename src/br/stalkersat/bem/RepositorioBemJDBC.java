@@ -2,8 +2,12 @@ package br.stalkersat.bem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.naming.spi.DirStateFactory.Result;
 
 import br.stalkersat.conexao.Conexao;
 
@@ -22,8 +26,6 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			e.printStackTrace();
 		}
 	}
-	
-	
 	
 	@Override
 	public void cadastrar(Bem bem) {
@@ -51,7 +53,26 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 
 	@Override
 	public boolean existe(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "select * from bem";
+		
+		try {
+			PreparedStatement pStatement = con.prepareStatement(sql);
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while (rSet.next()){
+				if(rSet.getInt(1) == id){
+					return true;
+				}
+			}
+			
+			pStatement.close();
+			rSet.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 

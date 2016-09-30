@@ -1,16 +1,13 @@
 package br.stalkersat.fachada;
 
-
-
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import br.stalkersat.conexao.Conexao;
+import br.stalkersat.bem.RepositorioBemJDBC;
 
 public class Teste {
-
+	
 	public static void main(String[] args){
-		
-		
+	
+		RepositorioBemJDBC r= new RepositorioBemJDBC();
+				
+		System.out.println(r.existe(5));
 	}
 }
