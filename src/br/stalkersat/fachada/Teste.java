@@ -2,12 +2,15 @@ package br.stalkersat.fachada;
 
 import br.stalkersat.localizacao.RepositorioLocalizacaoJDBC;
 import br.stalkersat.tipocontato.ControladorTipoContato;
+import br.stalkersat.usuario.RepositorioUsuarioJDBC;
 
 public class Teste {
 	
 	public static void main(String[] args){
 	
-		RepositorioLocalizacaoJDBC r = new RepositorioLocalizacaoJDBC();
+		RepositorioUsuarioJDBC r = new RepositorioUsuarioJDBC();
+		
+		System.out.println(r.procurar(1));
 		
 		
 		

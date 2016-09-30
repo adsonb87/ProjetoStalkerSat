@@ -2,10 +2,13 @@ package br.stalkersat.usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.stalkersat.conexao.Conexao;
+import br.stalkersat.endereco.RepositorioEnderecoJDBC;
+import br.stalkersat.tipousuario.RepositorioTipoUsuarioJDBC;
 
 public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 	
@@ -49,13 +52,33 @@ public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 
 	@Override
 	public Usuario procurar(Integer id) {
-		// TODO Auto-generated method stub
+		String sql = "select * from usuario where idUsuario = ?";
+		
+		try {
+			PreparedStatement pStmnt = con.prepareStatement(sql);
+			pStmnt.setInt(1, id);
+			ResultSet resultSet = pStmnt.executeQuery();
+			
+			if(resultSet.next()){
+				return new Usuario(resultSet.getInt(1), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), new RepositorioTipoUsuarioJDBC().procurar(resultSet.getInt(7)), new RepositorioEnderecoJDBC().procurar(resultSet.getInt(2)));
+			}
+			
+			pStmnt.close();
+			resultSet.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public void atualizar(Usuario usuario) {
-		// TODO Auto-generated method stub
+		if(existe(usuario.getCpf())){
+			
+		}
 		
 	}
 

@@ -132,7 +132,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", cpf=" + formatarCpf() + ", nome=" + nome + ", login=" + login + ", senha="
-				+ senha + ", tipoUsuario=" + tipoUsuario + ", endereco=" + endereco + "]";
+				+ senha + ", tipoUsuario=" + tipoUsuario.getTipo() + ", \n endereco=" + endereco + "]\n\n";
 	}
 	
 }
