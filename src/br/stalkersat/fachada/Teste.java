@@ -10,7 +10,7 @@ public class Teste {
 	
 		RepositorioUsuarioJDBC r = new RepositorioUsuarioJDBC();
 		
-		System.out.println(r.procurar(1));
+		System.out.println(r.listar());
 		
 		
 		
