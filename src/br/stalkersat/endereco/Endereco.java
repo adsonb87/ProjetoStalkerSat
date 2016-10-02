@@ -3,16 +3,28 @@ package br.stalkersat.endereco;
 public class Endereco {
 	
 	private Integer idEndereco;
-	private int numero;
+	private String numero;
 	private String complemento;
 	private String rua;
 	private String cep;
 	
-	public Endereco(int numero, String complemento, String rua, String cep) {
+	public Endereco(String numero, String complemento, String rua, String cep) {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.rua = rua;
 		this.setCep(cep);
+	}
+	
+	public Endereco(Integer id, String numero, String complemento, String rua, String cep) {
+		this.idEndereco = id;
+		this.numero = numero;
+		this.complemento = complemento;
+		this.rua = rua;
+		this.setCep(cep);
+	}
+	
+	public Endereco() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdEndereco() {
@@ -23,11 +35,11 @@ public class Endereco {
 		this.idEndereco = idEndereco;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

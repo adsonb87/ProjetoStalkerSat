@@ -72,7 +72,7 @@ public class Usuario {
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf.replaceAll(".,- ", "");;
+		this.cpf = cpf.replaceAll("\\.|\\,|\\-|\\ ", ""); 
 	}
 	
 	public String formatarCpf() {

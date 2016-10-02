@@ -89,6 +89,7 @@ public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 				pStmnt.setString(3, usuario.getLogin());
 				pStmnt.setString(4, usuario.getSenha());
 				pStmnt.setInt(5, usuario.getTipoUsuario().getIdTipoUsuario());
+				pStmnt.setInt(6, usuario.getIdUsuario());
 				
 				pStmnt.executeUpdate();
 				

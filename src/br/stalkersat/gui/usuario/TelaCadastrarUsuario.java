@@ -288,7 +288,7 @@ public class TelaCadastrarUsuario extends JPanel {
 	private void gravarUsuario(){
 		Fachada fachada = Fachada.getInstance();
 		
-		Endereco end = new Endereco(Integer.parseInt(numeroTf.getText()), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
+		Endereco end = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
 		
 		fachada.cadastrarEndereco(end);
 		

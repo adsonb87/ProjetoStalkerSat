@@ -15,6 +15,17 @@ public class Contato {
 		this.usuario = usuario;
 		this.tipoContato = tipoContato;
 	}
+	
+	public Contato(Integer id, String telefone, Usuario usuario, TipoContato tipoContato) {
+		this.idContato = id;
+		this.telefone = telefone;
+		this.usuario = usuario;
+		this.tipoContato = tipoContato;
+	}
+	
+	public Contato() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getIdContato() {
 		return idContato;
@@ -51,7 +62,7 @@ public class Contato {
 	@Override
 	public String toString() {
 		return "Contato [idContato=" + idContato + ", telefone=" + telefone + ", usuario=" + usuario + ", tipoContato="
-				+ tipoContato + "]";
+				+ tipoContato + "]\n";
 	}
 	
 }
