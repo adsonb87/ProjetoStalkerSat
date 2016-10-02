@@ -33,7 +33,7 @@ public class ControladorUsuario {
 	}
 	
 	public Usuario procurarUsuario (Integer id){
-		return procurarUsuario(id);
+		return repositorioUsuario.procurar(id);
 	}
 	
 	public boolean removerUsuario(Integer id){

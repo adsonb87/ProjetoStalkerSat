@@ -33,7 +33,6 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 	
 	@Override
 	public void cadastrar(Bem bem) {
-		if(!existe(bem.getChassi())){
 			String sql = "insert into bem (idUsuarioFk, chassi, placa, idTipoBemFk) values (?,?,?,?)";
 			
 			try {
@@ -51,15 +50,12 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}
 		
 	}
 
 	@Override
 	public void atualizar(Bem bem) {
-		if(existe(bem.getChassi())){
-			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBem = ? where idBem = ?";
+			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBemFk = ? where idBem = ?";
 			
 			try {
 				PreparedStatement pStmnt = con.prepareStatement(sql);
@@ -78,8 +74,6 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 				e.printStackTrace();
 			}
 		}
-		
-	}
 
 	@Override
 	public Bem procurar(Integer id) {

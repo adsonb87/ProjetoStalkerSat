@@ -8,7 +8,6 @@ public class Conexao {
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
-		System.out.println("Conectado");
 		return DriverManager.getConnection("jdbc:mysql://localhost/stalkersat_db", "root","");
 	}
 	
