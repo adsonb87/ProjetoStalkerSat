@@ -10,14 +10,7 @@ public class ControladorTipoContato {
 	
 	private static ControladorTipoContato controladorTipoContato;
 	
-	public static ControladorTipoContato getInstance(){
-		if(controladorTipoContato == null){
-			controladorTipoContato = new ControladorTipoContato();
-		}
-		return controladorTipoContato;
-	}
-	
-	private ControladorTipoContato() {
+	public ControladorTipoContato() {
 		repositorioTipoContato = new RepositorioTipoContatoJDBC();
 	}
 	

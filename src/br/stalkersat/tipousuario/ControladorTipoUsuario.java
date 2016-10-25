@@ -12,14 +12,7 @@ public class ControladorTipoUsuario {
 	
 	private static ControladorTipoUsuario controladorTipoUsuario;
 	
-	public static ControladorTipoUsuario getInstance(){
-		if(controladorTipoUsuario == null){
-			controladorTipoUsuario = new ControladorTipoUsuario();
-		}
-		return controladorTipoUsuario;
-	}
-	
-	private ControladorTipoUsuario() {
+	public ControladorTipoUsuario() {
 		repositorioTipoUsuario = new RepositorioTipoUsuarioJDBC();
 	}
 	

@@ -8,14 +8,7 @@ public class ControladorLocalizacao {
 	
 	private static ControladorLocalizacao controladorLocalizacao;
 	
-	public static ControladorLocalizacao getInstance(){
-		if(controladorLocalizacao == null){
-			controladorLocalizacao = new ControladorLocalizacao();
-		}
-		return controladorLocalizacao;
-	}
-	
-	private ControladorLocalizacao() {
+	public ControladorLocalizacao() {
 		repositorioLocalizacao = new RepositorioLocalizacaoJDBC();
 	}
 	

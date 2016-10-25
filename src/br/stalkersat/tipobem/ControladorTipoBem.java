@@ -8,14 +8,7 @@ public class ControladorTipoBem {
 	
 	private static ControladorTipoBem controladorTipoBem;
 	
-	public static ControladorTipoBem getInstance(){
-		if(controladorTipoBem == null){
-			controladorTipoBem = new ControladorTipoBem();
-		}
-		return controladorTipoBem;
-	}
-	
-	private ControladorTipoBem() {
+	public ControladorTipoBem() {
 		repositorioTipoBem = new RepositorioTipoBemJDBC();
 	}
 	

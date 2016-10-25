@@ -9,15 +9,8 @@ public class ControladorBem {
 	private IRepostorioBem repositorioBem;
 	
 	private static ControladorBem controladorBem;
-	
-	public static ControladorBem getInstance(){
-		if(controladorBem == null){
-			controladorBem = new ControladorBem();
-		}
-		return controladorBem;
-	}
-	
-	private ControladorBem() {
+		
+	public ControladorBem() {
 		repositorioBem = new RepositorioBemJDBC();
 	}
 	

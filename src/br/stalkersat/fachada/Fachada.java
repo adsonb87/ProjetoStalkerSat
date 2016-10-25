@@ -40,14 +40,14 @@ public class Fachada {
 	}
 	
 	private Fachada() {
-		controladorBem.getInstance();
-		controladorContato.getInstance();
-		controladorEndereco.getInstance();
-		controladorLocalizacao.getInstance();
-		controladorTipoBem.getInstance();
-		controladorTipoContato.getInstance();
-		controladorTipoUsuario.getInstance();
-		controladorUsuario.getInstance();
+		controladorBem = new ControladorBem();
+		controladorContato = new ControladorContato();
+		controladorEndereco = new ControladorEndereco();
+		controladorLocalizacao = new ControladorLocalizacao();
+		controladorTipoBem = new ControladorTipoBem();
+		controladorTipoContato = new ControladorTipoContato();
+		controladorTipoUsuario = new ControladorTipoUsuario();
+		controladorUsuario = new ControladorUsuario();
 	}
 	
 	//Bem 

@@ -155,7 +155,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
-			
+						
 			while(resultSet.next()){
 				Bem bem = new Bem();
 				

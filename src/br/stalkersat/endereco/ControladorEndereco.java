@@ -10,14 +10,7 @@ public class ControladorEndereco {
 	
 	private static ControladorEndereco controladorEndereco;
 	
-	public static ControladorEndereco getInstance(){
-		if(controladorEndereco == null){
-			controladorEndereco = new ControladorEndereco();
-		}
-		return controladorEndereco;
-	}
-	
-	private ControladorEndereco() {
+	public ControladorEndereco() {
 		repositorioEndereco = new RepositorioEnderecoJDBC();
 	}
 	
