@@ -65,7 +65,8 @@ public class Fachada {
 	}
 	
 	public Bem procurarBem (Integer id){
-		return procurarBem(id);
+		Bem bem = controladorBem.procurarBem(id);
+		return bem;
 	}
 	
 	public ArrayList<Bem> listarBens (){

@@ -46,6 +46,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 				pStmnt.execute();
 				con.close();
 				pStmnt.close();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

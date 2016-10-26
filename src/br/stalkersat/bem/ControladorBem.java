@@ -7,8 +7,6 @@ import br.stalkersat.endereco.Endereco;
 public class ControladorBem {
 	
 	private IRepostorioBem repositorioBem;
-	
-	private static ControladorBem controladorBem;
 		
 	public ControladorBem() {
 		repositorioBem = new RepositorioBemJDBC();
@@ -27,7 +25,11 @@ public class ControladorBem {
 	}
 	
 	public boolean removerBem(Integer id){
-		return repositorioBem.remover(id);
+		if(procurarBem(id) != null){
+			return repositorioBem.remover(id);
+		}else{
+			return false;
+		}
 	}
 	
 	public ArrayList<Bem> listarBens (){
