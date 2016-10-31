@@ -12,15 +12,8 @@ import br.stalkersat.conexao.Conexao;
 
 public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 	
-	private Connection con;
-	
 	public RepositorioLocalizacaoJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -28,6 +21,8 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		String sql = "insert into localizacao (latitude, longitude) values (?,?)";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, localizacao.getLatitude());
 			pStmnt.setString(2, localizacao.getLongitude());
@@ -35,6 +30,9 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 			pStmnt.close();
 			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -45,6 +43,8 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		String sql = "udate localizacao set latitude = ?, longitude = ? where idLocalizaco = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, localizacao.getLatitude());
 			pStmnt.setString(2, localizacao.getLongitude());
@@ -53,6 +53,9 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 			pStmnt.close();
 			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -64,6 +67,8 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		String sql = "select * from localizacao where idLocalizacao = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			
@@ -79,6 +84,9 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return null;
@@ -89,6 +97,8 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		String sql = "delete from localizacao where idLocalizacao = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			pStmnt.executeUpdate();
@@ -97,6 +107,9 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 			con.close();
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -115,6 +128,8 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 		String sql = "select * from localizacao";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -129,6 +144,9 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 			con.close();
 			resultSet.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

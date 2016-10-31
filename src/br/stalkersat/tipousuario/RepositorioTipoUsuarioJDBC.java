@@ -12,29 +12,26 @@ import br.stalkersat.conexao.Conexao;
 
 public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 	
-	private Connection con;
-	
 	public RepositorioTipoUsuarioJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
-	
 	
 	@Override
 	public void cadastrar(TipoUsuario tipoUsuario) {
 		String sql = "insert into tipo_do_usuario (tipo) values (?)";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, tipoUsuario.getTipo());
 			pStmnt.execute();
 			pStmnt.close();
 			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -45,9 +42,11 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 	public TipoUsuario procurar(Integer id) {
 		String sql = "select * from tipo_do_usuario where idTipoUsuario = ?";
 		
-		PreparedStatement pStmnt;
+		
 		try {
-			pStmnt = con.prepareStatement(sql);
+			Connection con = Conexao.getConnection();
+			
+			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			ResultSet resultSet = pStmnt.executeQuery();
 			
@@ -61,6 +60,9 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -70,6 +72,8 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 		String sql = "update tipo_do_usuario set tipo = ? where idTipoUsuario = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, tipoUsuario.getTipo());
 			pStmnt.setInt(2, tipoUsuario.getIdTipoUsuario());
@@ -77,6 +81,9 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 			pStmnt.close();
 			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -88,6 +95,8 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 		String sql = "delete from tipo_do_usuario where idTipoUsuario = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			pStmnt.executeUpdate();
@@ -96,6 +105,9 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 			
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -109,6 +121,8 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 		String sql = "select * from tipo_do_usuario";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			ResultSet resultSet = pStmnt.executeQuery();
 			
@@ -118,6 +132,9 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 				}
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -132,6 +149,8 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 		String sql = "select * from tipo_do_usuario";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -145,6 +164,9 @@ public class RepositorioTipoUsuarioJDBC implements IRepositorioTipoUsuario{
 			con.close();
 			resultSet.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

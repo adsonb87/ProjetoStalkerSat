@@ -14,15 +14,8 @@ import br.stalkersat.usuario.RepositorioUsuarioJDBC;
 
 public class RepositorioContatoJDBC implements IRepositorioContato{
 
-	private Connection con;
-	
 	public RepositorioContatoJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -30,6 +23,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		String sql = "insert into contato (idUsuarioFk, telefone, idTipoContatoFk) values (?,?,?)";
 		
 		try {
+			
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, contato.getUsuario().getIdUsuario());
@@ -42,6 +38,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -50,6 +49,8 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		String sql = "update from contato idUsuarioFk = ?, telefone = ?, idTipoContatoFk = ? where idContato = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, contato.getUsuario().getIdUsuario());
@@ -63,6 +64,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -71,6 +75,8 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		String sql = "select * from contato where idContato = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			
@@ -86,6 +92,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -95,6 +104,8 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		String sql = "delete from contato idContato = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			
@@ -104,6 +115,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 			
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -123,6 +137,8 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		String sql = "select * from contato";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
@@ -136,6 +152,9 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 			con.close();
 			rs.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

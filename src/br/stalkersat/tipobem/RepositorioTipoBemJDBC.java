@@ -12,15 +12,8 @@ import br.stalkersat.conexao.Conexao;
 
 public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 	
-	private Connection con;
-	
 	public RepositorioTipoBemJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -29,12 +22,17 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 			String sql = "insert into tipo_do_bem (tipo) values (?)";
 			
 			try {
+				Connection con = Conexao.getConnection();
+				
 				PreparedStatement pStmnt = con.prepareStatement(sql);
 				pStmnt.setString(1, tipoBem.getTipo());
 				pStmnt.execute();
 				pStmnt.close();
 				con.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -48,6 +46,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		String sql = "update tipo_do_bem set tipo = ? where idTipoBem = ?";
 		
 			try {
+				Connection con = Conexao.getConnection();
+				
 				PreparedStatement pStmnt = con.prepareStatement(sql);
 				pStmnt.setString(1, tipoBem.getTipo());
 				pStmnt.setInt(2, tipoBem.getIdTipoBem());
@@ -55,6 +55,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 				pStmnt.close();
 				con.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -67,6 +70,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		String sql = "select * from tipo_do_bem where idTipoBem = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -81,6 +86,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return null;
@@ -91,6 +99,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		String sql = "delete from tipo_do_bem where idTipoBem = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			pStmnt.executeUpdate();
@@ -98,6 +108,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 			con.close();
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -110,6 +123,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		String sql = "select * from tipo_do_bem";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -126,6 +141,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -137,6 +155,8 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 		String sql = "select * from tipo_do_bem";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt= con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -150,6 +170,9 @@ public class RepositorioTipoBemJDBC implements IRepositorioTIpoBem{
 			con.close();
 			resultSet.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

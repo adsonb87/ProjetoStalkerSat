@@ -11,15 +11,8 @@ import br.stalkersat.conexao.Conexao;
 
 public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 	
-	private Connection con;
-	
 	public RepositorioEnderecoJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -27,6 +20,8 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		String sql = "insert into endereco (numero, complemento, rua, cep) values (?,?,?,?)";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, endereco.getNumero());
 			pStmnt.setString(2, endereco.getComplemento());
@@ -38,6 +33,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -46,6 +44,8 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		String sql = "update endereco set numero = ?, complemento = ?, rua = ?, cep = ? where idEndereco = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setString(1, endereco.getNumero());
 			pStmnt.setString(2, endereco.getComplemento());
@@ -59,6 +59,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}	
 	}
 
@@ -67,6 +70,8 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		String sql = "select * from endereco where idEndereco = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			
@@ -82,6 +87,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return null;
@@ -92,6 +100,8 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		String sql = "delete from endereco where idEndereco = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			
@@ -102,6 +112,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 			
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -122,6 +135,8 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 		String sql = "select * from endereco";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
@@ -135,6 +150,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 			con.close();
 			rs.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
