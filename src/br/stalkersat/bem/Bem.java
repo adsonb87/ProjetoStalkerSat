@@ -80,9 +80,10 @@ public class Bem {
 		this.localizacao = localizacao;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Bem [idBem=" + idBem + ", usuario=" + usuario + ", chassi=" + chassi + ", placa=" + placa + ", tipoBem="
+		return "Bem [idBem=" + idBem + ", usuario=" + usuario.getNome() + ", chassi=" + chassi + ", placa=" + placa + ", tipoBem="
 				+ tipoBem.getTipo() + "]\n";
 	}
 	

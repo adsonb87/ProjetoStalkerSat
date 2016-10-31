@@ -7,10 +7,11 @@ public class Teste {
 		
 		Fachada f = Fachada.getInstance();
 		
-		Bem bem = new Bem(2, "adsa123kjj32", "pct1080", f.procurarTipoBem(1), f.procurarUsuario(2));
+		Bem bem = new Bem("chassi", "placa 100", f.procurarTipoBem(1), f.procurarUsuario(1));
 		
+		f.removerBem(4);
 		
-		
+		System.out.println(f.listarBens());
 	
 		
 		

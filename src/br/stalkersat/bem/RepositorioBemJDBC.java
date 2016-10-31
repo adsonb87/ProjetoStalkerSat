@@ -17,25 +17,33 @@ import br.stalkersat.usuario.Usuario;
 
 public class RepositorioBemJDBC implements IRepostorioBem{
 	
-	private Connection con;
+//	private Connection con;
+//	
+//	public RepositorioBemJDBC() {
+//		try {
+//			con = Conexao.getConnection();
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public RepositorioBemJDBC() {
-		try {
-			con = Conexao.getConnection();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated constructor stub
 	}
+
 	
 	@Override
 	public void cadastrar(Bem bem) {
 			String sql = "insert into bem (idUsuarioFk, chassi, placa, idTipoBemFk) values (?,?,?,?)";
 			
+			
 			try {
+				Connection con = Conexao.getConnection();
+				
 				PreparedStatement pStmnt = con.prepareStatement(sql);
 				
 				pStmnt.setInt(1, bem.getUsuario().getIdUsuario());
@@ -50,6 +58,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		
 	}
@@ -59,6 +70,8 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			String sql = "update bem set idUsuarioFk = ?, chassi = ?, placa = ?, idTipoBemFk = ? where idBem = ?";
 			
 			try {
+				Connection con = Conexao.getConnection();
+				
 				PreparedStatement pStmnt = con.prepareStatement(sql);
 				
 				pStmnt.setInt(1, bem.getUsuario().getIdUsuario());
@@ -73,6 +86,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 
@@ -81,6 +97,8 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		String sql = "select * from bem where idBem = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -95,6 +113,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return null;
@@ -105,6 +126,8 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		String sql = "delete from bem where idBem = ?";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			pStmnt.setInt(1, id);
 			
@@ -114,6 +137,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -126,6 +152,8 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		String sql = "select * from bem";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStatement = con.prepareStatement(sql);
 			ResultSet rSet = pStatement.executeQuery();
 			
@@ -141,6 +169,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return false;
@@ -153,6 +184,8 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		String sql = "select * from bem";
 		
 		try {
+			Connection con = Conexao.getConnection();
+			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
 			
 			ResultSet resultSet = pStmnt.executeQuery();
@@ -173,6 +206,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			con.close();
 			resultSet.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
