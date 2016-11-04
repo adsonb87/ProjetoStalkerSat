@@ -1,20 +1,24 @@
 package br.stalkersat.fachada;
 
 import br.stalkersat.bem.Bem;
+import br.stalkersat.localizacao.Localizacao;
+import br.stalkersat.tipobem.TipoBem;
+import br.stalkersat.tipocontato.TipoContato;
+import br.stalkersat.tipousuario.TipoUsuario;
 
 public class Teste {
 	public static void main (String[] args){
 		
 		Fachada f = Fachada.getInstance();
 		
-		Bem bem = new Bem("chassi", "placa 100", f.procurarTipoBem(1), f.procurarUsuario(1));
+		TipoContato contato = new TipoContato("Fixo");
 		
-		f.removerBem(4);
+		TipoContato contato2 = new TipoContato("Celular");
 		
-		System.out.println(f.listarBens());
-	
+		f.cadastrarTipoContato(contato);
+		f.cadastrarTipoContato(contato2);
+		
 		
 		
 	}
 }
-	
