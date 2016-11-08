@@ -100,7 +100,9 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			Connection con = Conexao.getConnection();
 			
 			PreparedStatement pStmnt = con.prepareStatement(sql);
+			
 			pStmnt.setInt(1, id);
+			
 			ResultSet resultSet = pStmnt.executeQuery();
 			
 			if(resultSet.next()){

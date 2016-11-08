@@ -46,7 +46,7 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 
 	@Override
 	public void atualizar(Contato contato) {
-		String sql = "update from contato idUsuarioFk = ?, telefone = ?, idTipoContatoFk = ? where idContato = ?";
+		String sql = "update contato set idUsuarioFk = ?, telefone = ?, idTipoContatoFk = ? where idContato = ?";
 		
 		try {
 			Connection con = Conexao.getConnection();
@@ -101,7 +101,7 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 
 	@Override
 	public boolean remover(Integer id) {
-		String sql = "delete from contato idContato = ?";
+		String sql = "delete from contato where idContato = ?";
 		
 		try {
 			Connection con = Conexao.getConnection();
@@ -110,6 +110,7 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 			ps.setInt(1, id);
 			
 			ps.executeUpdate();
+			
 			ps.close();
 			con.close();
 			

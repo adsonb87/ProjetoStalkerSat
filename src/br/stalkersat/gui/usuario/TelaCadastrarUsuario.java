@@ -2,6 +2,8 @@ package br.stalkersat.gui.usuario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
@@ -286,54 +288,9 @@ public class TelaCadastrarUsuario extends JPanel {
 	}
 	
 	private void gravarUsuario(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Endereco end = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
-		
-		fachada.cadastrarEndereco(end);
-		
-		TipoUsuario tipoUsuario = null;
-		
-		if(tipoUsuarioCB.getSelectedItem().equals("Usuario")){
-			tipoUsuario = fachada.procurarTipoUsuario(2);
-		}else if(tipoUsuarioCB.getSelectedItem().equals("Administrador")){
-			tipoUsuario = fachada.procurarTipoUsuario(1);
-		}
-		
-		Usuario user = new Usuario(cpfTf.getText(), nomeTf.getText(), loginTf.getText(), senhaTf.getText(), tipoUsuario, end);
-		
-		fachada.cadastrarUsuario(user);
-		
-		
-		TipoContato tipoContato = null;
-		
-		if(tipoContatoCB.getSelectedItem().equals("Fixo")){
-			tipoContato = fachada.procurarTipoContato(1);
-		}else if(tipoContatoCB.getSelectedItem().equals("Celular")){
-			tipoContato = fachada.procurarTipoContato(2);
-		}
-		
-		Contato contato = new Contato(telefoneTf.getText(), user, tipoContato);
-		
-		fachada.cadastrarContato(contato);
-		
-		
-		TipoBem tipoBem = null;
-		
-		if(tipoBemCB.getSelectedItem().equals("Moto")){
-			tipoBem = fachada.procurarTipoBem(2);
-		}else if(tipoContatoCB.getSelectedItem().equals("Carro")){
-			tipoBem = fachada.procurarTipoBem(1);
-		}
-		
-		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), tipoBem, user);
-		
-		fachada.cadastrarBem(bem);
-		
-		limparCampos();
 		
 	}
-	
+		
 	private void limparCampos(){
 		nomeTf.setText("");
 		cpfTf.setText("");

@@ -26,7 +26,9 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 			pStmnt.setString(1, endereco.getNumero());
 			pStmnt.setString(2, endereco.getComplemento());
 			pStmnt.setString(3, endereco.getRua());
-			pStmnt.setString(4, endereco.formatarCep());
+			pStmnt.setString(4, endereco.getCep());
+			
+			pStmnt.execute();
 			
 			pStmnt.close();
 			con.close();
@@ -50,7 +52,7 @@ public class RepositorioEnderecoJDBC implements IRepositorioEndereco{
 			pStmnt.setString(1, endereco.getNumero());
 			pStmnt.setString(2, endereco.getComplemento());
 			pStmnt.setString(3, endereco.getRua());
-			pStmnt.setString(4, endereco.formatarCep());
+			pStmnt.setString(4, endereco.getCep());
 			pStmnt.setInt(5, endereco.getIdEndereco());
 			
 			pStmnt.executeUpdate();

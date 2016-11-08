@@ -12,7 +12,7 @@ public class Endereco {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.rua = rua;
-		this.setCep(cep);
+		this.cep = cep;
 	}
 	
 	public Endereco(Integer id, String numero, String complemento, String rua, String cep) {
@@ -74,7 +74,7 @@ public class Endereco {
 	@Override
 	public String toString() {
 		return "Endereco [idEndereco=" + idEndereco + ", numero=" + numero + ", complemento=" + complemento + ", rua="
-				+ rua + ", cep=" + formatarCep() + "]";
+				+ rua + ", cep=" + cep + "]\n";
 	}
 	
 	

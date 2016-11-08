@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.stalkersat.fachada.Fachada;
+import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.usuario.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -22,8 +23,8 @@ import java.awt.Toolkit;
 public class TelaLogin {
 
 	private JFrame frame;
-	private JTextField senhaTF;
 	private JTextField loginTF;
+	private JTextField senhaTF;
 
 	/**
 	 * Launch the application.
@@ -61,11 +62,11 @@ public class TelaLogin {
 		
 		JLabel lblSenha = new JLabel("Senha");
 		
-		senhaTF = new JTextField();
-		senhaTF.setColumns(10);
-		
 		loginTF = new JTextField();
 		loginTF.setColumns(10);
+		
+		senhaTF = new JTextField();
+		senhaTF.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
@@ -88,8 +89,8 @@ public class TelaLogin {
 								.addComponent(lblLogin))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-								.addComponent(loginTF, 275, 275, 275)))
+								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
+								.addComponent(senhaTF, 275, 275, 275)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(182)
 							.addComponent(btnLogin))
@@ -104,11 +105,11 @@ public class TelaLogin {
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblLogin)
-						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSenha)
-						.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnLogin)
 					.addGap(46)
@@ -126,13 +127,17 @@ public class TelaLogin {
 		for(int i=0; i<listaUsuarios.size(); i++){
 			if(listaUsuarios.get(i).getLogin().equalsIgnoreCase(loginTF.getText()) && listaUsuarios.get(i).getSenha().equalsIgnoreCase(senhaTF.getText())){
 				if(listaUsuarios.get(i).getTipoUsuario().getIdTipoUsuario() == 1){
-					TelaPrincipalAdministrador telaAdm = new TelaPrincipalAdministrador();
-					frame.setContentPane(telaAdm);
+					TelaPrincipalAdministrador telaADM = new TelaPrincipalAdministrador();
+					
+					frame.setContentPane(telaADM);
 					frame.getContentPane().revalidate();
+					frame.setVisible(true);
 				}else if(listaUsuarios.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
-					TelaRastreamentoCliente telaCliente = new TelaRastreamentoCliente();
-					frame.setContentPane(telaCliente);
+					TelaRastreamentoCliente telaRastreamento = new TelaRastreamentoCliente();
+					
+					frame.setContentPane(telaRastreamento);
 					frame.getContentPane().revalidate();
+					frame.setVisible(true);
 				}
 			}
 		}
