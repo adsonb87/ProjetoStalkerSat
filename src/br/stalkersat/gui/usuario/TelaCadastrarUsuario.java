@@ -307,7 +307,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		}
 		
 		
-		Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(),loginTf.getText(),senhaTf.getText(),fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()));
+		Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(),loginTf.getText(),senhaTf.getText(),fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()+1));
 		usuario.setEndereco(fachada.procurarEndereco(indice));
 		
 		fachada.cadastrarUsuario(usuario);
@@ -322,11 +322,11 @@ public class TelaCadastrarUsuario extends JPanel {
 			}
 		}
 		
-		Contato contato = new Contato(telefoneTf.getText(), fachada.procurarUsuario(indiceUsuario), fachada.procurarTipoContato(tipoContatoCB.getSelectedIndex()));
+		Contato contato = new Contato(telefoneTf.getText(), fachada.procurarUsuario(indiceUsuario), fachada.procurarTipoContato(tipoContatoCB.getSelectedIndex()+1));
 		
 		fachada.cadastrarContato(contato);
 		
-		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(tipoBemCB.getSelectedIndex()), fachada.procurarUsuario(indiceUsuario));
+		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(tipoBemCB.getSelectedIndex()+1), fachada.procurarUsuario(indiceUsuario));
 		
 		fachada.cadastrarBem(bem);
 		
@@ -338,13 +338,13 @@ public class TelaCadastrarUsuario extends JPanel {
 		nomeTf.setText("");
 		cpfTf.setText("");
 		loginTf.setText("");
-		senhaTf.setText("");;
-		ruaTf.setText("");;
-		numeroTf.setText("");;
-		complementoTf.setText("");;
-		cepTf.setText("");;
-		telefoneTf.setText("");;
-		chassiTf.setText("");;
-		placaTf.setText("");;
+		senhaTf.setText("");
+		ruaTf.setText("");
+		numeroTf.setText("");
+		complementoTf.setText("");
+		cepTf.setText("");
+		telefoneTf.setText("");
+		chassiTf.setText("");
+		placaTf.setText("");
 	}
 }
