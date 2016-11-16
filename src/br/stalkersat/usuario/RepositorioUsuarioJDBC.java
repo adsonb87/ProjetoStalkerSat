@@ -21,19 +21,20 @@ public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 	
 	@Override
 	public void cadastrar(Usuario usuario) {
-		if(!existe(usuario.getCpf())){
 			String sql = "insert into usuario (idEnderecoFk, cpf, nome, login, senha, idTipoUsuarioFk) values (?,?,?,?,?,?)";
 			
 			try {
 				Connection con = Conexao.getConnection();
 				
 				PreparedStatement pStmnt = con.prepareStatement(sql);
+				
 				pStmnt.setInt(1, usuario.getEndereco().getIdEndereco());
 				pStmnt.setString(2, usuario.getCpf());
 				pStmnt.setString(3, usuario.getNome());
 				pStmnt.setString(4, usuario.getLogin());
 				pStmnt.setString(5, usuario.getSenha());
 				pStmnt.setInt(6, usuario.getTipoUsuario().getIdTipoUsuario());
+				
 				
 				pStmnt.execute();
 				
@@ -49,7 +50,6 @@ public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 			
 		}
 		
-	}
 
 	@Override
 	public Usuario procurar(Integer id) {
@@ -83,7 +83,7 @@ public class RepositorioUsuarioJDBC implements IRepositorioUsuario{
 	@Override
 	public void atualizar(Usuario usuario) {
 		if(existe(usuario.getCpf())){
-			String sql = "update usuario nome = ?, cpf = ?, login = ?, senha = ?, idTipoUsuarioFk = ? where idUsuario = ?";
+			String sql = "update usuario set nome = ?, cpf = ?, login = ?, senha = ?, idTipoUsuarioFk = ? where idUsuario = ?";
 			
 			try {
 				Connection con = Conexao.getConnection();

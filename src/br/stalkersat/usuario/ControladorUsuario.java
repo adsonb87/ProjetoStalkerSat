@@ -10,9 +10,7 @@ import br.stalkersat.tipousuario.TipoUsuario;
 public class ControladorUsuario {
 
 	private IRepositorioUsuario repositorioUsuario;
-	
-	private static ControladorUsuario controladorUsuario;
-	
+		
 	public ControladorUsuario() {
 		repositorioUsuario = new RepositorioUsuarioJDBC();
 	}

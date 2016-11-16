@@ -7,7 +7,7 @@ import br.stalkersat.endereco.Endereco;
 public class ControladorBem {
 	
 	private IRepostorioBem repositorioBem;
-		
+	
 	public ControladorBem() {
 		repositorioBem = new RepositorioBemJDBC();
 	}

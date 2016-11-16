@@ -23,7 +23,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 public class TelaListarUsuario extends JPanel {
-	private JTextField idTf;
 	private JTextPane textPane;
 
 	/**
@@ -31,11 +30,6 @@ public class TelaListarUsuario extends JPanel {
 	 */
 	public TelaListarUsuario() {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Listar Usuario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		
-		JLabel lblIdUsuario = new JLabel("Id Usuario:");
-		
-		idTf = new JTextField();
-		idTf.setColumns(10);
 		
 		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
@@ -53,11 +47,6 @@ public class TelaListarUsuario extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblIdUsuario)
-							.addGap(18)
-							.addComponent(idTf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(307)
 							.addComponent(btnListar))
 						.addGroup(groupLayout.createSequentialGroup()
@@ -68,11 +57,7 @@ public class TelaListarUsuario extends JPanel {
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblIdUsuario)
-						.addComponent(idTf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(43)
 					.addComponent(btnListar)
 					.addGap(18)
 					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)

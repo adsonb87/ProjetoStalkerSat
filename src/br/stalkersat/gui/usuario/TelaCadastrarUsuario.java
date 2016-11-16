@@ -288,6 +288,49 @@ public class TelaCadastrarUsuario extends JPanel {
 	}
 	
 	private void gravarUsuario(){
+		Fachada fachada = Fachada.getInstance();
+		
+		Endereco endereco = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
+		
+		fachada.cadastrarEndereco(endereco);
+		
+		ArrayList<Endereco> listaEndereco = fachada.listarEndereco();
+		
+		int indice = 0;
+		
+		for(int i=0;i<listaEndereco.size();i++){
+			if(listaEndereco.get(i).getRua().equals(endereco.getRua())){
+				if(listaEndereco.get(i).getNumero().equalsIgnoreCase(endereco.getNumero())){
+					indice = i;			
+				}
+			}
+		}
+		
+		
+		Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(),loginTf.getText(),senhaTf.getText(),fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()));
+		usuario.setEndereco(fachada.procurarEndereco(indice));
+		
+		fachada.cadastrarUsuario(usuario);
+		
+		ArrayList<Usuario> listaUsuario = fachada.listarUsuario();
+		
+		int indiceUsuario = 0;
+		
+		for(int i=0; i<listaUsuario.size();i++){
+			if(listaUsuario.get(i).getCpf().equalsIgnoreCase(usuario.getCpf())){
+				indiceUsuario = i;
+			}
+		}
+		
+		Contato contato = new Contato(telefoneTf.getText(), fachada.procurarUsuario(indiceUsuario), fachada.procurarTipoContato(tipoContatoCB.getSelectedIndex()));
+		
+		fachada.cadastrarContato(contato);
+		
+		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(tipoBemCB.getSelectedIndex()), fachada.procurarUsuario(indiceUsuario));
+		
+		fachada.cadastrarBem(bem);
+		
+		
 		
 	}
 		

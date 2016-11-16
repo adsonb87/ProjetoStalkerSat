@@ -61,8 +61,8 @@ public class Contato {
 
 	@Override
 	public String toString() {
-		return "Contato [idContato=" + idContato + ", telefone=" + telefone + ", usuario=" + usuario + ", tipoContato="
-				+ tipoContato + "]\n";
+		return "Contato [idContato=" + idContato + ", telefone=" + telefone + ", usuario=" + usuario.getNome() + ", tipoContato="
+				+ tipoContato.getTipo() + "]\n";
 	}
 	
 }
