@@ -28,11 +28,11 @@ public class TelaListarBem extends JPanel {
 				listarBens();
 			}
 		});
-		btnListar.setBounds(271, 96, 89, 23);
+		btnListar.setBounds(269, 33, 89, 23);
 		add(btnListar);
 		
 		
-		textPane.setBounds(10, 145, 630, 260);
+		textPane.setBounds(10, 80, 630, 323);
 		add(textPane);
 
 	}
