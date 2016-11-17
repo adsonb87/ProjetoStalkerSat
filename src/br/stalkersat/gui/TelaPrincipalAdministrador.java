@@ -17,6 +17,11 @@ import br.stalkersat.gui.bem.TelaCadastrarBem;
 import br.stalkersat.gui.bem.TelaListarBem;
 import br.stalkersat.gui.bem.TelaProcurarBem;
 import br.stalkersat.gui.bem.TelaRemoverBem;
+import br.stalkersat.gui.contato.TelaAtualizarContato;
+import br.stalkersat.gui.contato.TelaCadastrarContato;
+import br.stalkersat.gui.contato.TelaListarContato;
+import br.stalkersat.gui.contato.TelaProcurarContato;
+import br.stalkersat.gui.contato.TelaRemoverContato;
 import br.stalkersat.gui.usuario.TelaAtualizarUsuario;
 import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.gui.usuario.TelaListarUsuario;
@@ -27,6 +32,7 @@ import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class TelaPrincipalAdministrador extends JFrame {
 
@@ -197,6 +203,74 @@ public class TelaPrincipalAdministrador extends JFrame {
 			}
 		});
 		mnBem.add(mntmListarBem);
+		
+		JMenu mnContato = new JMenu("Contato");
+		menuBar.add(mnContato);
+		
+		JMenuItem mnCadastrarContato = new JMenuItem("Cadastrar");
+		mnCadastrarContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastrarContato tCadastrarContato = new TelaCadastrarContato();
+				
+				frame.setContentPane(tCadastrarContato);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnContato.add(mnCadastrarContato);
+		
+		JMenuItem mnAtualizarContato = new JMenuItem("Atualizar");
+		mnAtualizarContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAtualizarContato tAtualizarContato = new TelaAtualizarContato();
+				
+				frame.setContentPane(tAtualizarContato);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnContato.add(mnAtualizarContato);
+		
+		JMenuItem mnProcurarContato = new JMenuItem("Procurar");
+		mnProcurarContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaProcurarContato tProcurarContato = new  TelaProcurarContato();
+				
+				frame.setContentPane(tProcurarContato);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnContato.add(mnProcurarContato);
+		
+		JMenuItem mnListarContato = new JMenuItem("Listar");
+		mnListarContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaListarContato tListarContato = new TelaListarContato();
+				
+				frame.setContentPane(tListarContato);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnContato.add(mnListarContato);
+		
+		JMenuItem mnRemoverContato = new JMenuItem("Remover");
+		mnRemoverContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaRemoverContato tRemoverContato = new TelaRemoverContato();
+				
+				frame.setContentPane(tRemoverContato);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnContato.add(mnRemoverContato);
 		
 		
 		contentPane = new JPanel();

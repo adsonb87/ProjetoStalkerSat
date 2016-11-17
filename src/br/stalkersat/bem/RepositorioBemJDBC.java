@@ -134,6 +134,7 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 			pStmnt.setInt(1, id);
 			
 			pStmnt.executeUpdate();
+			
 			pStmnt.close();
 			con.close();
 			

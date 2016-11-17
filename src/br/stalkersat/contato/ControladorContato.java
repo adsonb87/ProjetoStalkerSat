@@ -26,7 +26,11 @@ public class ControladorContato {
 	
 	
 	public boolean removerContato (Integer id){
-		return repositorioContato.remover(id);
+		if(procurarContato(id) != null){
+			return repositorioContato.remover(id);
+		}else{
+			return false;
+		}
 	}
 	
 	public ArrayList<Contato> listarContato(){

@@ -10,11 +10,7 @@ public class Teste {
 		
 		Fachada f = Fachada.getInstance();
 		
-		Usuario u = new Usuario("cpf","hugo campos","login","senha",f.procurarTipoUsuario(1),f.procurarEndereco(3));
-		u.setIdUsuario(2);
-		
-		f.atualizarUsuario(u);
-		
+		System.out.println(f.removerContato(3));
 		
 		
 		
