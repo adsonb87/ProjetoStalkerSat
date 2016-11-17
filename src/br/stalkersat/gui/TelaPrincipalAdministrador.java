@@ -22,6 +22,11 @@ import br.stalkersat.gui.contato.TelaCadastrarContato;
 import br.stalkersat.gui.contato.TelaListarContato;
 import br.stalkersat.gui.contato.TelaProcurarContato;
 import br.stalkersat.gui.contato.TelaRemoverContato;
+import br.stalkersat.gui.endereco.TelaAtualizarEndereco;
+import br.stalkersat.gui.endereco.TelaCadastrarEndereco;
+import br.stalkersat.gui.endereco.TelaListarEndereco;
+import br.stalkersat.gui.endereco.TelaProcurarEndereco;
+import br.stalkersat.gui.endereco.TelaRemoverEndereco;
 import br.stalkersat.gui.usuario.TelaAtualizarUsuario;
 import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.gui.usuario.TelaListarUsuario;
@@ -271,6 +276,74 @@ public class TelaPrincipalAdministrador extends JFrame {
 			}
 		});
 		mnContato.add(mnRemoverContato);
+		
+		JMenu mnEndereco = new JMenu("Endereco");
+		menuBar.add(mnEndereco);
+		
+		JMenuItem mnCadastrarEndereco = new JMenuItem("Cadastrar");
+		mnCadastrarEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastrarEndereco tCadastrarEndereco = new TelaCadastrarEndereco();
+				
+				frame.setContentPane(tCadastrarEndereco);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnEndereco.add(mnCadastrarEndereco);
+		
+		JMenuItem mnProcurarEndereco = new JMenuItem("Procurar");
+		mnProcurarEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaProcurarEndereco tProcurarEndereco = new TelaProcurarEndereco();
+				
+				frame.setContentPane(tProcurarEndereco);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnEndereco.add(mnProcurarEndereco);
+		
+		JMenuItem mnAtualizarEndereco = new JMenuItem("Atualizar");
+		mnAtualizarEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAtualizarEndereco tAtualizarEndereco = new TelaAtualizarEndereco();
+				
+				frame.setContentPane(tAtualizarEndereco);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnEndereco.add(mnAtualizarEndereco);
+		
+		JMenuItem mnRemoverEndereco = new JMenuItem("Remover");
+		mnRemoverEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaRemoverEndereco tRemoverEndereco = new TelaRemoverEndereco();
+				
+				frame.setContentPane(tRemoverEndereco);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnEndereco.add(mnRemoverEndereco);
+		
+		JMenuItem mnListarEndereco = new JMenuItem("Listar");
+		mnListarEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaListarEndereco tListarEndereco = new TelaListarEndereco();
+				
+				frame.setContentPane(tListarEndereco);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+				frame.setBounds(100, 100, 450, 300);
+			}
+		});
+		mnEndereco.add(mnListarEndereco);
 		
 		
 		contentPane = new JPanel();

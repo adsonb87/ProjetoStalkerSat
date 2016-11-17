@@ -23,7 +23,11 @@ public class ControladorEndereco {
 	}
 	
 	public boolean removerEndereco (Integer id){
-		return repositorioEndereco.remover(id);
+		if(procurarEndereco(id) != null){
+			return repositorioEndereco.remover(id);		
+		}else{
+			return false;
+		}
 	}
 	
 	public Endereco procurarEndereco (Integer id){
