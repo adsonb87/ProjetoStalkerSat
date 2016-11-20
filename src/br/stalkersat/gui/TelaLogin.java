@@ -17,13 +17,15 @@ import javax.swing.JTextPane;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
+import java.awt.Label;
+import javax.swing.ImageIcon;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaLogin {
 
 	private JFrame frame;
 	private JTextField loginTF;
 	private JPasswordField senhaTF;
-	JTextPane textPane = new JTextPane();
 
 	/**
 	 * Launch the application.
@@ -54,7 +56,7 @@ public class TelaLogin {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp2.png"));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 395, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblLogin = new JLabel("Login");
@@ -74,6 +76,9 @@ public class TelaLogin {
 	
 		
 		senhaTF = new JPasswordField();
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -87,12 +92,15 @@ public class TelaLogin {
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(182)
+							.addGap(157)
 							.addComponent(btnLogin)))
-					.addContainerGap(51, Short.MAX_VALUE))
+					.addContainerGap(254, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(24, Short.MAX_VALUE)
+					.addComponent(label)
+					.addGap(20))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -105,11 +113,11 @@ public class TelaLogin {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSenha)
 						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(35)
 					.addComponent(btnLogin)
-					.addGap(18)
-					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(46, Short.MAX_VALUE))
+					.addGap(28)
+					.addComponent(label)
+					.addContainerGap(48, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
@@ -129,7 +137,7 @@ public class TelaLogin {
 						frame.getContentPane().revalidate();
 						frame.setVisible(true);
 					}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
-						TelaRastreamentoCliente2 telaRastreamentoCliente = new TelaRastreamentoCliente2();
+						TelaRastreamentoCliente telaRastreamentoCliente = new TelaRastreamentoCliente();
 						
 						frame.setContentPane(telaRastreamentoCliente);
 						frame.getContentPane().revalidate();

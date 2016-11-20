@@ -74,7 +74,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		JLabel lblTelefone = new JLabel("Telefone:");
 		
 		tipoContatoCB = new JComboBox();
-		tipoContatoCB.setModel(new DefaultComboBoxModel(new String[] {"Celular", "Fixo"}));
+		tipoContatoCB.setModel(new DefaultComboBoxModel(new String[] {"Fixo", "Celular"}));
 		
 		JLabel lblChassi = new JLabel("Chassi:");
 		
@@ -128,21 +128,6 @@ public class TelaCadastrarUsuario extends JPanel {
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limparCampos();
-			}
-		});
-		
-		JButton btnAdicionarBem = new JButton("Adicionar Bem");
-		btnAdicionarBem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
-		
-		JButton btnAdicionarContato = new JButton("Adicionar Contato");
-		btnAdicionarContato.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
 		
@@ -211,12 +196,7 @@ public class TelaCadastrarUsuario extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnGravar)
 							.addGap(18)
-							.addComponent(btnLimpar)
-							.addGap(18)
-							.addComponent(btnAdicionarBem)
-							.addGap(18)
-							.addComponent(btnAdicionarContato)
-							.addGap(58))))
+							.addComponent(btnLimpar))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -278,9 +258,7 @@ public class TelaCadastrarUsuario extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnGravar)
-						.addComponent(btnLimpar)
-						.addComponent(btnAdicionarBem)
-						.addComponent(btnAdicionarContato))
+						.addComponent(btnLimpar))
 					.addGap(20))
 		);
 		setLayout(groupLayout);
@@ -301,7 +279,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		for(int i=0;i<listaEndereco.size();i++){
 			if(listaEndereco.get(i).getRua().equals(endereco.getRua())){
 				if(listaEndereco.get(i).getNumero().equalsIgnoreCase(endereco.getNumero())){
-					indice = i;			
+					indice = listaEndereco.get(i).getIdEndereco();			
 				}
 			}
 		}
@@ -318,7 +296,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		
 		for(int i=0; i<listaUsuario.size();i++){
 			if(listaUsuario.get(i).getCpf().equalsIgnoreCase(usuario.getCpf())){
-				indiceUsuario = i;
+				indiceUsuario = listaUsuario.get(i).getIdUsuario();
 			}
 		}
 		
@@ -330,8 +308,7 @@ public class TelaCadastrarUsuario extends JPanel {
 		
 		fachada.cadastrarBem(bem);
 		
-		
-		
+		limparCampos();	
 	}
 		
 	private void limparCampos(){

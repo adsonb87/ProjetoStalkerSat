@@ -12,11 +12,13 @@ import javax.swing.JPanel;
 import br.stalkersat.gui.bem.TelaAtualizarBem;
 import br.stalkersat.gui.bem.TelaCadastrarBem;
 import br.stalkersat.gui.bem.TelaListarBem;
+import br.stalkersat.gui.bem.TelaListarBemCliente;
 import br.stalkersat.gui.bem.TelaProcurarBem;
 import br.stalkersat.gui.bem.TelaRemoverBem;
 import br.stalkersat.gui.contato.TelaAtualizarContato;
 import br.stalkersat.gui.contato.TelaCadastrarContato;
 import br.stalkersat.gui.contato.TelaListarContato;
+import br.stalkersat.gui.contato.TelaListarContatoCliente;
 import br.stalkersat.gui.contato.TelaProcurarContato;
 import br.stalkersat.gui.contato.TelaRemoverContato;
 import br.stalkersat.gui.endereco.TelaAtualizarEndereco;
@@ -29,6 +31,8 @@ import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.gui.usuario.TelaListarUsuario;
 import br.stalkersat.gui.usuario.TelaProcurarUsuario;
 import br.stalkersat.gui.usuario.TelaRemoverUsuario;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipalAdministrador extends JPanel {
 	private JFrame frame = new JFrame();
@@ -182,6 +186,12 @@ public class TelaPrincipalAdministrador extends JPanel {
 		JMenuItem ListarPorCliente = new JMenuItem("Listar por cliente");
 		ListarPorCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaListarBemCliente bemCliente = new TelaListarBemCliente();
+				
+				frame.setBounds(100, 100, 450, 300);
+				frame.setContentPane(bemCliente);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
 			}
 		});
 		mnBem.add(ListarPorCliente);
@@ -325,9 +335,20 @@ public class TelaPrincipalAdministrador extends JPanel {
 		JMenuItem mntmListarPorCliente = new JMenuItem("Listar por cliente");
 		mntmListarPorCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaListarContatoCliente contatoCliente = new TelaListarContatoCliente();
+				
+				frame.setBounds(100, 100, 450, 300);
+				frame.setContentPane(contatoCliente);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
 			}
 		});
 		mnContato.add(mntmListarPorCliente);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
+		label.setBounds(10, 48, 351, 140);
+		add(label);
 
 	}
 }

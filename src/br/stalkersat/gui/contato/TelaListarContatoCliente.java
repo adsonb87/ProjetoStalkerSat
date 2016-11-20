@@ -1,16 +1,22 @@
 package br.stalkersat.gui.contato;
 
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.border.TitledBorder;
+
+import br.stalkersat.contato.Contato;
+import br.stalkersat.fachada.Fachada;
 
 public class TelaListarContatoCliente extends JPanel {
 	private JTextField idTf;
+	private JTextPane textPane = new JTextPane();
 
 	/**
 	 * Create the panel.
@@ -37,14 +43,24 @@ public class TelaListarContatoCliente extends JPanel {
 		btnListar.setBounds(297, 71, 89, 23);
 		add(btnListar);
 		
-		JTextPane textPane = new JTextPane();
+		
 		textPane.setBounds(10, 108, 720, 321);
 		add(textPane);
 
 	}
 	
 	public void listarContatos(Integer id){
+		Fachada fachada = Fachada.getInstance();
 		
+		ArrayList<Contato> lista = fachada.listarContatoPorUsuario(id);
+		
+		if(lista.isEmpty()){
+			textPane.setText("Lista vazia");
+		}else{
+			textPane.setText(lista.toString());
+		}
+		
+		idTf.setText("");
 	}
 
 }
