@@ -1,19 +1,14 @@
 package br.stalkersat.bem;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import br.stalkersat.conexao.Conexao;
 import br.stalkersat.tipobem.RepositorioTipoBemJDBC;
-import br.stalkersat.tipobem.TipoBem;
 import br.stalkersat.usuario.RepositorioUsuarioJDBC;
-import br.stalkersat.usuario.Usuario;
 
 public class RepositorioBemJDBC implements IRepostorioBem{
 	
@@ -217,6 +212,43 @@ public class RepositorioBemJDBC implements IRepostorioBem{
 		}
 		
 		return listaBem;
+	}
+
+
+	@Override
+	public ArrayList<Bem> listarPorUsuario(Integer id) {
+		ArrayList<Bem> lista = new ArrayList<>();
+		
+		String sql = "select * from bem where idUsuarioFk = ?";
+		
+		try {
+			Connection con = Conexao.getConnection();
+			
+			PreparedStatement preparedStatement = con.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, id);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()){
+				Bem bem = new Bem();
+				
+				bem.setIdBem(resultSet.getInt(1));
+				bem.setChassi(resultSet.getString(3));
+				bem.setPlaca(resultSet.getString(4));
+				bem.setUsuario(new RepositorioUsuarioJDBC().procurar(resultSet.getInt(2)));
+				bem.setTipoBem(new RepositorioTipoBemJDBC().procurar(resultSet.getInt(5)));
+				
+				lista.add(bem);
+			}
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 
 }

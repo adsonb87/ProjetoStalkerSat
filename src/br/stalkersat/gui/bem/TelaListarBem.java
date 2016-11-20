@@ -42,7 +42,12 @@ public class TelaListarBem extends JPanel {
 		
 		ArrayList<Bem> listaBens = fachada.listarBens();
 		
-		textPane.setText(listaBens.toString());
+		
+		if(!listaBens.isEmpty()){
+			textPane.setText(listaBens.toString());		
+		}else{
+			textPane.setText("Lista de bens Vazia");
+		}
 	}
 
 }

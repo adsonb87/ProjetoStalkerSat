@@ -11,4 +11,5 @@ public interface IRepostorioBem {
 	public boolean remover (Integer id);
 	public boolean existe (String chassi);
 	public ArrayList<Bem> listar ();
+	public ArrayList<Bem> listarPorUsuario(Integer id);
 }

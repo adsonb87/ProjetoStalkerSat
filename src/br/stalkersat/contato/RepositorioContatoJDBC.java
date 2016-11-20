@@ -165,4 +165,32 @@ public class RepositorioContatoJDBC implements IRepositorioContato{
 		return lista;
 	}
 
+	@Override
+	public ArrayList<Contato> listarPorUsuario(Integer id) {
+		ArrayList<Contato> lista = new  ArrayList<>();
+		
+		String sql = "select * from contato where idUsuarioFk = ?";
+		
+		try {
+			Connection con = Conexao.getConnection();
+			
+			PreparedStatement preparedStatement = con.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, id);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				Contato contato = new Contato(rs.getInt(1), rs.getString(3), new RepositorioUsuarioJDBC().procurar(rs.getInt(2)), new RepositorioTipoContatoJDBC().procurar(rs.getInt(4)));
+				
+				lista.add(contato);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
+	}
+
 }

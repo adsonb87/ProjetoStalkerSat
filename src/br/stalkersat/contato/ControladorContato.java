@@ -36,4 +36,8 @@ public class ControladorContato {
 	public ArrayList<Contato> listarContato(){
 		return repositorioContato.listar();
 	}
+	
+	public ArrayList<Contato> listarContatoPorUsuario(Integer id){
+		return repositorioContato.listarPorUsuario(id);
+	}
 }

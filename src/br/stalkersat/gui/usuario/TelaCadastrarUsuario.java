@@ -21,7 +21,7 @@ import br.stalkersat.bem.Bem;
 import br.stalkersat.contato.Contato;
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.fachada.Fachada;
-import br.stalkersat.gui.TelaPrincipalAdministrador;
+import br.stalkersat.gui.TelaPrincipalAdministrador2;
 import br.stalkersat.tipobem.TipoBem;
 import br.stalkersat.tipocontato.TipoContato;
 import br.stalkersat.tipousuario.TipoUsuario;

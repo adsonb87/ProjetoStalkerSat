@@ -1,6 +1,7 @@
 package br.stalkersat.gui;
 
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,21 +11,19 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 import br.stalkersat.fachada.Fachada;
-import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.usuario.Usuario;
-import javax.swing.ImageIcon;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.Toolkit;
 
 public class TelaLogin {
 
 	private JFrame frame;
 	private JTextField loginTF;
-	private JTextField senhaTF;
+	private JPasswordField senhaTF;
+	JTextPane textPane = new JTextPane();
 
 	/**
 	 * Launch the application.
@@ -65,9 +64,6 @@ public class TelaLogin {
 		loginTF = new JTextField();
 		loginTF.setColumns(10);
 		
-		senhaTF = new JTextField();
-		senhaTF.setColumns(10);
-		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -75,8 +71,9 @@ public class TelaLogin {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
+	
+		
+		senhaTF = new JPasswordField();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -89,15 +86,13 @@ public class TelaLogin {
 								.addComponent(lblLogin))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
 								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-								.addComponent(senhaTF, 275, 275, 275)))
+								.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(182)
-							.addComponent(btnLogin))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(42)
-							.addComponent(lblNewLabel)))
-					.addContainerGap(57, Short.MAX_VALUE))
+							.addComponent(btnLogin)))
+					.addContainerGap(51, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -109,11 +104,11 @@ public class TelaLogin {
 					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSenha)
-						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnLogin)
-					.addGap(46)
-					.addComponent(lblNewLabel)
+					.addGap(18)
+					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(46, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
@@ -122,27 +117,30 @@ public class TelaLogin {
 	private void fazerLogin(){
 		Fachada fachada = Fachada.getInstance();
 		
-		ArrayList<Usuario> listaUsuarios = fachada.listarUsuario();
+		ArrayList<Usuario> lista = fachada.listarUsuario();
 		
-		for(int i=0; i<listaUsuarios.size(); i++){
-			if(listaUsuarios.get(i).getLogin().equalsIgnoreCase(loginTF.getText()) && listaUsuarios.get(i).getSenha().equalsIgnoreCase(senhaTF.getText())){
-				if(listaUsuarios.get(i).getTipoUsuario().getIdTipoUsuario() == 1){
-					TelaPrincipalAdministrador telaADM = new TelaPrincipalAdministrador();
-					
-					frame.setContentPane(telaADM);
-					frame.getContentPane().revalidate();
-					frame.setVisible(true);
-				}else if(listaUsuarios.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
-					TelaRastreamentoCliente telaRastreamento = new TelaRastreamentoCliente();
-					
-					frame.setContentPane(telaRastreamento);
-					frame.getContentPane().revalidate();
-					frame.setVisible(true);
+		for(int i=0; i<lista.size(); i++){
+			if(lista.get(i).getLogin().equalsIgnoreCase(loginTF.getText())){
+				if(lista.get(i).getSenha().equalsIgnoreCase(senhaTF.getText())){
+					if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 1){
+						TelaPrincipalAdministrador tPrincipalAdministrador = new TelaPrincipalAdministrador();
+											
+						frame.setContentPane(tPrincipalAdministrador);
+						frame.getContentPane().revalidate();
+						frame.setVisible(true);
+					}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
+						TelaRastreamentoCliente2 telaRastreamentoCliente = new TelaRastreamentoCliente2();
+						
+						frame.setContentPane(telaRastreamentoCliente);
+						frame.getContentPane().revalidate();
+						frame.setVisible(true);
+					}
 				}
 			}
 		}
 		
-		JOptionPane.showConfirmDialog(null, "Usuario não localizado");
+//		JOptionPane.showConfirmDialog(null, "Usuario não localizado");
+		
 		
 	}
 }

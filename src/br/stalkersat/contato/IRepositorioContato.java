@@ -10,5 +10,5 @@ public interface IRepositorioContato {
 	public boolean remover (Integer id);
 	public boolean existe (Integer id);
 	public ArrayList<Contato> listar ();
-	
+	public ArrayList<Contato> listarPorUsuario(Integer id);
 }

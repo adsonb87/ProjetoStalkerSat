@@ -40,7 +40,7 @@ public class RepositorioLocalizacaoJDBC implements IRepositorioLocalizacao{
 
 	@Override
 	public void atualizar(Localizacao localizacao) {
-		String sql = "udate localizacao set latitude = ?, longitude = ? where idLocalizaco = ?";
+		String sql = "update localizacao set latitude = ?, longitude = ? where idLocalizacao = ?";
 		
 		try {
 			Connection con = Conexao.getConnection();

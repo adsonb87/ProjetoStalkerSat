@@ -1,5 +1,6 @@
 package br.stalkersat.fachada;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import br.stalkersat.bem.Bem;
@@ -73,6 +74,10 @@ public class Fachada {
 		return controladorBem.listarBens();
 	}
 	
+	public ArrayList<Bem> listarBemPorUsuario(Integer id){
+		return controladorBem.listarBemPorUsuario(id);
+	}
+	
 	//Contato
 	
 	public void cadastrarContato(Contato contato){
@@ -93,6 +98,10 @@ public class Fachada {
 	
 	public ArrayList<Contato> listarContato(){
 		return controladorContato.listarContato();
+	}
+	
+	public ArrayList<Contato> listarContatoPorUsuario(Integer id){
+		return controladorContato.listarContatoPorUsuario(id);
 	}
 	
 	// endereco

@@ -35,4 +35,8 @@ public class ControladorBem {
 	public ArrayList<Bem> listarBens (){
 		return repositorioBem.listar();
 	}
+	
+	public ArrayList<Bem> listarBemPorUsuario(Integer id){
+		return repositorioBem.listarPorUsuario(id);
+	}
 }
