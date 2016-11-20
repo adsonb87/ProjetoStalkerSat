@@ -346,8 +346,8 @@ public class TelaPrincipalAdministrador extends JPanel {
 		mnContato.add(mntmListarPorCliente);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp.png"));
-		label.setBounds(10, 48, 351, 140);
+		label.setIcon(new ImageIcon(TelaPrincipalAdministrador.class.getResource("/br/stalkersat/util/StalkerSAT-transp.png")));
+		label.setBounds(10, 32, 349, 197);
 		add(label);
 
 	}
