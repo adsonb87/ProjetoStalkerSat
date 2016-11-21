@@ -33,16 +33,16 @@ public class TelaAtualizarBem extends JPanel {
 		add(lblIdBem);
 		
 		idBemTf = new JTextField();
-		idBemTf.setBounds(66, 20, 86, 20);
+		idBemTf.setBounds(76, 20, 86, 20);
 		add(idBemTf);
 		idBemTf.setColumns(10);
 		
 		JLabel lblIdUsuario = new JLabel("Id Usuario:");
-		lblIdUsuario.setBounds(10, 58, 59, 14);
+		lblIdUsuario.setBounds(10, 58, 73, 14);
 		add(lblIdUsuario);
 		
 		idUsuarioTf = new JTextField();
-		idUsuarioTf.setBounds(66, 55, 86, 20);
+		idUsuarioTf.setBounds(76, 51, 86, 20);
 		add(idUsuarioTf);
 		idUsuarioTf.setColumns(10);
 		
@@ -51,7 +51,7 @@ public class TelaAtualizarBem extends JPanel {
 		add(lblChassi);
 		
 		chassiTf = new JTextField();
-		chassiTf.setBounds(66, 86, 334, 20);
+		chassiTf.setBounds(76, 91, 334, 20);
 		add(chassiTf);
 		chassiTf.setColumns(10);
 		
@@ -60,7 +60,7 @@ public class TelaAtualizarBem extends JPanel {
 		add(lblPlaca);
 		
 		placaTf = new JTextField();
-		placaTf.setBounds(66, 125, 86, 20);
+		placaTf.setBounds(76, 125, 86, 20);
 		add(placaTf);
 		placaTf.setColumns(10);
 		

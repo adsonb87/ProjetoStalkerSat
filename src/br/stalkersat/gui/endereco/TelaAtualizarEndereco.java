@@ -27,7 +27,7 @@ public class TelaAtualizarEndereco extends JPanel {
 		setLayout(null);
 		
 		JLabel lblIdEndereco = new JLabel("Id Endereco:");
-		lblIdEndereco.setBounds(10, 22, 67, 14);
+		lblIdEndereco.setBounds(10, 22, 79, 14);
 		add(lblIdEndereco);
 		
 		JLabel lblRua = new JLabel("Rua:");
@@ -35,39 +35,39 @@ public class TelaAtualizarEndereco extends JPanel {
 		add(lblRua);
 		
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
-		lblNmero.setBounds(10, 91, 67, 14);
+		lblNmero.setBounds(10, 79, 67, 14);
 		add(lblNmero);
 		
 		JLabel lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(10, 126, 79, 14);
+		lblComplemento.setBounds(10, 114, 79, 14);
 		add(lblComplemento);
 		
 		JLabel lblCep = new JLabel("Cep:");
-		lblCep.setBounds(10, 163, 46, 14);
+		lblCep.setBounds(10, 142, 46, 14);
 		add(lblCep);
 		
 		idTf = new JTextField();
-		idTf.setBounds(87, 19, 86, 20);
+		idTf.setBounds(97, 19, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		
 		ruaTf = new JTextField();
-		ruaTf.setBounds(63, 47, 479, 20);
+		ruaTf.setBounds(97, 51, 479, 20);
 		add(ruaTf);
 		ruaTf.setColumns(10);
 		
 		numeroTf = new JTextField();
-		numeroTf.setBounds(73, 88, 86, 20);
+		numeroTf.setBounds(97, 76, 86, 20);
 		add(numeroTf);
 		numeroTf.setColumns(10);
 		
 		complementoTf = new JTextField();
-		complementoTf.setBounds(113, 123, 439, 20);
+		complementoTf.setBounds(99, 111, 439, 20);
 		add(complementoTf);
 		complementoTf.setColumns(10);
 		
 		cepTf = new JTextField();
-		cepTf.setBounds(57, 160, 133, 20);
+		cepTf.setBounds(97, 139, 133, 20);
 		add(cepTf);
 		cepTf.setColumns(10);
 		

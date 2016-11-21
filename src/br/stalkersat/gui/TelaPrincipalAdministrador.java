@@ -1,5 +1,6 @@
 package br.stalkersat.gui;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -55,7 +56,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastrarUsuario tCadastrarUsuario = new TelaCadastrarUsuario();				
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 590);
 				frame.setContentPane(tCadastrarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -68,7 +69,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaAtualizarUsuario tAtualizarUsuario = new TelaAtualizarUsuario();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tAtualizarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -81,7 +82,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaProcurarUsuario tProcurarUsuario = new TelaProcurarUsuario();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tProcurarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -94,7 +95,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaRemoverUsuario tRemoverUsuario = new TelaRemoverUsuario();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tRemoverUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -107,7 +108,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaListarUsuario tListarUsuario = new TelaListarUsuario();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tListarUsuario);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -123,7 +124,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastrarBem tCadastrarBem = new TelaCadastrarBem();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tCadastrarBem);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -136,7 +137,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaAtualizarBem tAtualizarBem = new TelaAtualizarBem();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tAtualizarBem);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -149,7 +150,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaProcurarBem tProcurarBem = new TelaProcurarBem();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tProcurarBem);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -162,7 +163,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaRemoverBem tRemoverBem = new TelaRemoverBem();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tRemoverBem);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -175,7 +176,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaListarBem tListarBem = new TelaListarBem();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(tListarBem);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -188,7 +189,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaListarBemCliente bemCliente = new TelaListarBemCliente();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(bemCliente);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -207,7 +208,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tCadastrarEndereco);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnEndereo.add(CadastrarEndereco);
@@ -220,7 +221,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tAtualizarEndereco);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnEndereo.add(AtualizarEndereco);
@@ -233,7 +234,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tProcurarEndereco);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnEndereo.add(ProcurarEndereco);
@@ -246,7 +247,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tRemoverEndereco);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnEndereo.add(RemoverEndereco);
@@ -259,7 +260,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tListarEndereco);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnEndereo.add(ListarEndereco);
@@ -275,7 +276,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tCadastrarContato);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnContato.add(CadastrarContato);
@@ -288,7 +289,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tAtualizarContato);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnContato.add(AtualizarContato);
@@ -301,7 +302,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tProcurarContato);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnContato.add(ProcurarContato);
@@ -314,7 +315,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tRemoverContato);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnContato.add(RemoverContato);
@@ -327,7 +328,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 				frame.setContentPane(tListarContato);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 			}
 		});
 		mnContato.add(ListarContato);
@@ -337,7 +338,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				TelaListarContatoCliente contatoCliente = new TelaListarContatoCliente();
 				
-				frame.setBounds(100, 100, 450, 300);
+				frame.setBounds(100, 100, 740, 440);
 				frame.setContentPane(contatoCliente);
 				frame.getContentPane().revalidate();
 				frame.setVisible(true);
@@ -347,7 +348,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaPrincipalAdministrador.class.getResource("/br/stalkersat/util/StalkerSAT-transp.png")));
-		label.setBounds(10, 32, 349, 197);
+		label.setBounds(163, 32, 354, 383);
 		add(label);
 
 	}

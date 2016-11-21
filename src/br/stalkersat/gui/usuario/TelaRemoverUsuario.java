@@ -43,7 +43,7 @@ public class TelaRemoverUsuario extends JPanel {
 		add(btnRemover);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 94, 730, 476);
+		textField.setBounds(10, 94, 720, 335);
 		add(textField);
 		textField.setColumns(10);
 

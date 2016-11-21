@@ -40,11 +40,11 @@ public class TelaListarContatoCliente extends JPanel {
 				listarContatos(Integer.parseInt(idTf.getText()));
 			}
 		});
-		btnListar.setBounds(297, 71, 89, 23);
+		btnListar.setBounds(321, 69, 89, 23);
 		add(btnListar);
 		
 		
-		textPane.setBounds(10, 108, 720, 321);
+		textPane.setBounds(10, 108, 720, 308);
 		add(textPane);
 
 	}

@@ -29,7 +29,7 @@ public class TelaListarBemCliente extends JPanel {
 		add(lblIdCliente);
 		
 		idTf = new JTextField();
-		idTf.setBounds(65, 23, 86, 20);
+		idTf.setBounds(73, 23, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		

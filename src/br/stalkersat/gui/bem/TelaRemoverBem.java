@@ -26,11 +26,11 @@ public class TelaRemoverBem extends JPanel {
 		setLayout(null);
 		
 		JLabel lblId = new JLabel("Id:");
-		lblId.setBounds(10, 27, 46, 14);
+		lblId.setBounds(10, 27, 26, 14);
 		add(lblId);
 		
 		idTf = new JTextField();
-		idTf.setBounds(32, 24, 86, 20);
+		idTf.setBounds(46, 24, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		
@@ -40,11 +40,11 @@ public class TelaRemoverBem extends JPanel {
 				removerBem(Integer.parseInt(idTf.getText()));
 			}
 		});
-		btnRemover.setBounds(261, 72, 89, 23);
+		btnRemover.setBounds(308, 65, 89, 23);
 		add(btnRemover);
 		
 		
-		textPane.setBounds(10, 99, 620, 340);
+		textPane.setBounds(10, 99, 720, 308);
 		add(textPane);
 
 	}

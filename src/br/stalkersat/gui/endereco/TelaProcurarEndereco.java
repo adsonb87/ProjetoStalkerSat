@@ -29,7 +29,7 @@ public class TelaProcurarEndereco extends JPanel {
 		add(lblIdEndereco);
 		
 		idTf = new JTextField();
-		idTf.setBounds(90, 30, 86, 20);
+		idTf.setBounds(84, 30, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		
@@ -43,7 +43,7 @@ public class TelaProcurarEndereco extends JPanel {
 		add(btnProcurar);
 		
 		
-		textPane.setBounds(10, 122, 720, 307);
+		textPane.setBounds(10, 122, 720, 295);
 		add(textPane);
 
 	}

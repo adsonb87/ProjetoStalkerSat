@@ -1,5 +1,9 @@
 package br.stalkersat.gui.endereco;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +35,7 @@ public class TelaCadastrarEndereco extends JPanel {
 		add(lblRua);
 		
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
-		lblNmero.setBounds(10, 55, 46, 14);
+		lblNmero.setBounds(10, 55, 78, 14);
 		add(lblNmero);
 		
 		JLabel lblComplemento = new JLabel("Complemento:");
@@ -43,12 +47,12 @@ public class TelaCadastrarEndereco extends JPanel {
 		add(lblCep);
 		
 		ruaTf = new JTextField();
-		ruaTf.setBounds(66, 27, 558, 20);
+		ruaTf.setBounds(99, 27, 558, 20);
 		add(ruaTf);
 		ruaTf.setColumns(10);
 		
 		numeroTf = new JTextField();
-		numeroTf.setBounds(66, 52, 86, 20);
+		numeroTf.setBounds(98, 52, 86, 20);
 		add(numeroTf);
 		numeroTf.setColumns(10);
 		
@@ -58,7 +62,7 @@ public class TelaCadastrarEndereco extends JPanel {
 		complementoTf.setColumns(10);
 		
 		cepTf = new JTextField();
-		cepTf.setBounds(66, 105, 86, 20);
+		cepTf.setBounds(98, 105, 86, 20);
 		add(cepTf);
 		cepTf.setColumns(10);
 		

@@ -25,11 +25,11 @@ public class TelaProcurarBem extends JPanel {
 		setLayout(null);
 		
 		JLabel lblId = new JLabel("Id:");
-		lblId.setBounds(10, 26, 46, 14);
+		lblId.setBounds(10, 26, 24, 14);
 		add(lblId);
 		
 		idTf = new JTextField();
-		idTf.setBounds(34, 23, 86, 20);
+		idTf.setBounds(44, 23, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		
@@ -39,11 +39,11 @@ public class TelaProcurarBem extends JPanel {
 				procurarBem(Integer.parseInt(idTf.getText()));
 			}
 		});
-		btnBuscar.setBounds(267, 65, 89, 23);
+		btnBuscar.setBounds(311, 65, 89, 23);
 		add(btnBuscar);
 		
 		
-		textPane.setBounds(10, 123, 630, 306);
+		textPane.setBounds(10, 123, 720, 289);
 		add(textPane);
 
 	}

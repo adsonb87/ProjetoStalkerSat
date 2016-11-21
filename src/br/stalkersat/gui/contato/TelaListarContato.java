@@ -28,10 +28,10 @@ public class TelaListarContato extends JPanel {
 				listarContatos();
 			}
 		});
-		btnListar.setBounds(310, 48, 89, 23);
+		btnListar.setBounds(320, 47, 89, 23);
 		add(btnListar);
 		
-		textPane.setBounds(10, 93, 720, 336);
+		textPane.setBounds(10, 93, 720, 321);
 		add(textPane);
 		
 	}

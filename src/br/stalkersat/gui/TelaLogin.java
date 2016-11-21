@@ -1,5 +1,6 @@
 package br.stalkersat.gui;
 
+import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -132,13 +133,15 @@ public class TelaLogin {
 				if(lista.get(i).getSenha().equalsIgnoreCase(senhaTF.getText())){
 					if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 1){
 						TelaPrincipalAdministrador tPrincipalAdministrador = new TelaPrincipalAdministrador();
-											
+						
+						frame.setBounds(100, 100, 740, 440);
 						frame.setContentPane(tPrincipalAdministrador);
 						frame.getContentPane().revalidate();
 						frame.setVisible(true);
 					}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
 						TelaRastreamentoCliente telaRastreamentoCliente = new TelaRastreamentoCliente();
 						
+						frame.setBounds(100, 100, 740, 440);
 						frame.setContentPane(telaRastreamentoCliente);
 						frame.getContentPane().revalidate();
 						frame.setVisible(true);

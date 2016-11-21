@@ -53,7 +53,7 @@ public class TelaProcurarUsuario extends JPanel {
 		add(btnLimpar);
 		
 		textPane.setEditable(false);
-		textPane.setBounds(10, 134, 725, 457);
+		textPane.setBounds(10, 134, 720, 281);
 		add(textPane);
 
 	}

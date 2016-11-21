@@ -37,7 +37,7 @@ public class TelaCadastrarBem extends JPanel {
 		add(idTf);
 		idTf.setColumns(10);
 		
-		JLabel lblChassi = new JLabel("Chassi");
+		JLabel lblChassi = new JLabel("Chassi:");
 		lblChassi.setBounds(10, 66, 46, 14);
 		add(lblChassi);
 		
