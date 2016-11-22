@@ -2,7 +2,6 @@ package br.stalkersat.gui.usuario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -21,10 +20,6 @@ import br.stalkersat.bem.Bem;
 import br.stalkersat.contato.Contato;
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.fachada.Fachada;
-import br.stalkersat.gui.TelaPrincipalAdministrador2;
-import br.stalkersat.tipobem.TipoBem;
-import br.stalkersat.tipocontato.TipoContato;
-import br.stalkersat.tipousuario.TipoUsuario;
 import br.stalkersat.usuario.Usuario;
 
 public class TelaCadastrarUsuario extends JPanel {
