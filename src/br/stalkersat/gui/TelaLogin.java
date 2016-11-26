@@ -1,6 +1,5 @@
 package br.stalkersat.gui;
 
-import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -9,18 +8,15 @@ import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
-import java.awt.Label;
-import javax.swing.ImageIcon;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaLogin {
 
@@ -137,9 +133,12 @@ public class TelaLogin {
 						frame.setBounds(100, 100, 740, 440);
 						frame.setContentPane(tPrincipalAdministrador);
 						frame.getContentPane().revalidate();
-						frame.setVisible(true);
-					}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
+						frame.setVisible(true);		
+						}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
+							
 						TelaRastreamentoCliente telaRastreamentoCliente = new TelaRastreamentoCliente();
+						
+						telaRastreamentoCliente.setIdUsuario(lista.get(i).getIdUsuario());
 						
 						frame.setBounds(100, 100, 740, 440);
 						frame.setContentPane(telaRastreamentoCliente);

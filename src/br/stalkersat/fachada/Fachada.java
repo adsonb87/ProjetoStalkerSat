@@ -1,6 +1,5 @@
 package br.stalkersat.fachada;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import br.stalkersat.bem.Bem;
@@ -9,6 +8,7 @@ import br.stalkersat.contato.Contato;
 import br.stalkersat.contato.ControladorContato;
 import br.stalkersat.endereco.ControladorEndereco;
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.localizacao.ControladorLocalizacao;
 import br.stalkersat.localizacao.Localizacao;
 import br.stalkersat.tipobem.ControladorTipoBem;
@@ -53,19 +53,19 @@ public class Fachada {
 	
 	//Bem 
 	
-	public void cadastrarBem (Bem bem){
+	public void cadastrarBem (Bem bem) throws ErrorException{
 		controladorBem.cadastrarBem(bem);
 	}
 	
-	public void atualizarBem (Bem bem){
+	public void atualizarBem (Bem bem)throws ErrorException{
 		controladorBem.atualizarBem(bem);
 	}
 	
-	public boolean removerBem(Integer id){
+	public boolean removerBem(Integer id)throws ErrorException{
 		return controladorBem.removerBem(id);
 	}
 	
-	public Bem procurarBem (Integer id){
+	public Bem procurarBem (Integer id)throws ErrorException{
 		Bem bem = controladorBem.procurarBem(id);
 		return bem;
 	}
@@ -74,25 +74,25 @@ public class Fachada {
 		return controladorBem.listarBens();
 	}
 	
-	public ArrayList<Bem> listarBemPorUsuario(Integer id){
+	public ArrayList<Bem> listarBemPorUsuario(Integer id) throws ErrorException{
 		return controladorBem.listarBemPorUsuario(id);
 	}
 	
 	//Contato
 	
-	public void cadastrarContato(Contato contato){
+	public void cadastrarContato(Contato contato)throws ErrorException{
 		controladorContato.cadastrarContato(contato);
 	}
 	
-	public void atualizarContato(Contato contato){
+	public void atualizarContato(Contato contato)throws ErrorException{
 		controladorContato.atualizarContato(contato);
 	}
 	
-	public boolean removerContato (Integer id){
+	public boolean removerContato (Integer id)throws ErrorException{
 		return controladorContato.removerContato(id);
 	}
 	
-	public Contato procurarContato (Integer id){
+	public Contato procurarContato (Integer id)throws ErrorException{
 		return controladorContato.procurarContato(id);
 	}
 	
@@ -100,26 +100,26 @@ public class Fachada {
 		return controladorContato.listarContato();
 	}
 	
-	public ArrayList<Contato> listarContatoPorUsuario(Integer id){
+	public ArrayList<Contato> listarContatoPorUsuario(Integer id)throws ErrorException{
 		return controladorContato.listarContatoPorUsuario(id);
 	}
 	
 	// endereco
 	
 
-	public void cadastrarEndereco (Endereco endereco){
+	public void cadastrarEndereco (Endereco endereco) throws ErrorException{
 		controladorEndereco.cadastrarEndereco(endereco);
 	}
 	
-	public void atualizarEndereco (Endereco endereco){
+	public void atualizarEndereco (Endereco endereco) throws ErrorException{
 		controladorEndereco.atualizarEndereco(endereco);
 	}
 	
-	public boolean removerEndereco (Integer id){
+	public boolean removerEndereco (Integer id) throws ErrorException{
 		return controladorEndereco.removerEndereco(id);
 	}
 	
-	public Endereco procurarEndereco (Integer id){
+	public Endereco procurarEndereco (Integer id) throws ErrorException{
 		return controladorEndereco.procurarEndereco(id);
 	}
 	
@@ -217,19 +217,19 @@ public class Fachada {
 	
 	// usuario
 	
-	public void cadastrarUsuario(Usuario usuario){
+	public void cadastrarUsuario(Usuario usuario) throws ErrorException{
 		controladorUsuario.cadastrarUsuario(usuario);
 	}
 	
-	public void atualizarUsuario(Usuario usuario){
+	public void atualizarUsuario(Usuario usuario) throws ErrorException{
 		controladorUsuario.atualizarUsuario(usuario);
 	}
 	
-	public Usuario procurarUsuario (Integer id){
+	public Usuario procurarUsuario (Integer id) throws ErrorException{
 		return controladorUsuario.procurarUsuario(id);
 	}
 	
-	public boolean removerUsuario(Integer id){
+	public boolean removerUsuario(Integer id) throws ErrorException{
 		return controladorUsuario.removerUsuario(id);
 	}
 	

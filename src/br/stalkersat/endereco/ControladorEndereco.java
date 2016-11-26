@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.hibernate.hql.internal.ast.ErrorReporter;
 
+import br.stalkersat.exceptions.ErrorException;
+
 public class ControladorEndereco {
 	
 	private IRepositorioEndereco repositorioEndereco;
@@ -14,24 +16,40 @@ public class ControladorEndereco {
 		repositorioEndereco = new RepositorioEnderecoJDBC();
 	}
 	
-	public void cadastrarEndereco (Endereco endereco){
-		repositorioEndereco.cadastrar(endereco);
-	}
-	
-	public void atualizarEndereco (Endereco endereco){
-		repositorioEndereco.atualizar(endereco);
-	}
-	
-	public boolean removerEndereco (Integer id){
-		if(procurarEndereco(id) != null){
-			return repositorioEndereco.remover(id);		
+	public void cadastrarEndereco (Endereco endereco)  throws ErrorException{
+		if(endereco !=null){
+			repositorioEndereco.cadastrar(endereco);
 		}else{
-			return false;
+			throw new ErrorException("Endereço nulo");
 		}
 	}
 	
-	public Endereco procurarEndereco (Integer id){
-		return repositorioEndereco.procurar(id);
+	public void atualizarEndereco (Endereco endereco) throws ErrorException{
+		if(endereco.getIdEndereco() != null){
+			repositorioEndereco.atualizar(endereco);
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
+	}
+	
+	public boolean removerEndereco (Integer id) throws ErrorException{
+		if(id != null){
+			if(procurarEndereco(id) != null){
+				return repositorioEndereco.remover(id);		
+			}else{
+				return false;
+			}
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
+	}
+	
+	public Endereco procurarEndereco (Integer id) throws ErrorException{
+		if(id != null){
+			return repositorioEndereco.procurar(id);
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
 	}
 	
 	public ArrayList<Endereco> listarEndereco(){

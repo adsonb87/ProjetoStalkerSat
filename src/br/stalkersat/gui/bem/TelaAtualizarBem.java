@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.bem.Bem;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaAtualizarBem extends JPanel {
@@ -90,13 +91,18 @@ public class TelaAtualizarBem extends JPanel {
 	}
 	
 	public void atualizarBem(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Bem bem = new Bem(Integer.parseInt(idBemTf.getText()), chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(comboBox.getSelectedIndex()+1), fachada.procurarUsuario(Integer.parseInt(idUsuarioTf.getText())));
-		
-		fachada.atualizarBem(bem);
-		
-		limpar();
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Bem bem = new Bem(Integer.parseInt(idBemTf.getText()), chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(comboBox.getSelectedIndex()+1), fachada.procurarUsuario(Integer.parseInt(idUsuarioTf.getText())));
+			
+			fachada.atualizarBem(bem);
+			
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void limpar(){

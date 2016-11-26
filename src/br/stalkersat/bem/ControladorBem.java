@@ -3,6 +3,7 @@ package br.stalkersat.bem;
 import java.util.ArrayList;
 
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 
 public class ControladorBem {
 	
@@ -12,23 +13,39 @@ public class ControladorBem {
 		repositorioBem = new RepositorioBemJDBC();
 	}
 	
-	public void cadastrarBem (Bem bem){
-		repositorioBem.cadastrar(bem);
-	}
-	
-	public void atualizarBem (Bem bem){
-		repositorioBem.atualizar(bem);
-	}
-	
-	public Bem procurarBem (Integer id){
-		return repositorioBem.procurar(id);
-	}
-	
-	public boolean removerBem(Integer id){
-		if(procurarBem(id) != null){
-			return repositorioBem.remover(id);
+	public void cadastrarBem (Bem bem) throws ErrorException{
+		if(bem != null){
+			repositorioBem.cadastrar(bem);
 		}else{
-			return false;
+			throw new ErrorException("Bem Nulo");
+		}
+	}
+	
+	public void atualizarBem (Bem bem)throws ErrorException{
+		if(bem.getIdBem() != null){
+			repositorioBem.atualizar(bem);			
+		}else{
+			throw new ErrorException("Bem nulo");
+		}
+	}
+	
+	public Bem procurarBem (Integer id) throws ErrorException{
+		if(id!=null){
+			return repositorioBem.procurar(id);
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
+	}
+	
+	public boolean removerBem(Integer id) throws ErrorException{
+		if(id != null){
+			if(procurarBem(id) != null){
+				return repositorioBem.remover(id);
+			}else{
+				return false;
+			}
+		}else{
+			throw new ErrorException("Id não localizado");
 		}
 	}
 	
@@ -36,7 +53,11 @@ public class ControladorBem {
 		return repositorioBem.listar();
 	}
 	
-	public ArrayList<Bem> listarBemPorUsuario(Integer id){
-		return repositorioBem.listarPorUsuario(id);
+	public ArrayList<Bem> listarBemPorUsuario(Integer id) throws ErrorException{
+		if(id != null){
+			return repositorioBem.listarPorUsuario(id);
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
 	}
 }

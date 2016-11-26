@@ -12,13 +12,23 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.bem.Bem;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.localizacao.Localizacao;
 
 public class TelaRastreamentoCliente extends JPanel {
 	private JTextField idTf;
 	private JTextPane textPane = new JTextPane();
-
+	private Integer idUsuario;
+	
+	public void setIdUsuario(Integer id){
+		idUsuario = id;
+	}
+	
+	public Integer getIdUsuario(){
+		return idUsuario;
+	}
+	
 	/**
 	 * Create the panel.
 	 */
@@ -51,20 +61,27 @@ public class TelaRastreamentoCliente extends JPanel {
 	}
 	
 	public void rastrearBem(Integer idBem){
-		Integer idLocalizacao = sortearLocalizacao();
-		
-		Fachada fachada = Fachada.getInstance();
-		
-		Localizacao localizacao = fachada.procurarLocalizacao(idLocalizacao);
-		
-		Bem bem = fachada.procurarBem(idBem);		
-		
-		if(bem == null){
-			textPane.setText("Bem não existe");
-		}else {
-			textPane.setText(bem.toString() + localizacao.toString());
-		}
+		try {
+			Integer idLocalizacao = sortearLocalizacao();
+			
+			Fachada fachada = Fachada.getInstance();
+			
+			Localizacao localizacao = fachada.procurarLocalizacao(idLocalizacao);
+			
+			Bem bem = fachada.procurarBem(idBem);
+			
+			if(bem == null){
+				textPane.setText("Bem não existe");
+			}else {
+				textPane.setText(bem.toString() + localizacao.toString());
+			}
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
+	
+	
 	
 	public int sortearLocalizacao(){
 		Random r = new Random();

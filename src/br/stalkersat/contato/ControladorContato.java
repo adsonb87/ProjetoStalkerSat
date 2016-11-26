@@ -2,6 +2,8 @@ package br.stalkersat.contato;
 
 import java.util.ArrayList;
 
+import br.stalkersat.exceptions.ErrorException;
+
 public class ControladorContato {
 
 	private IRepositorioContato repositorioContato;
@@ -12,24 +14,40 @@ public class ControladorContato {
 		repositorioContato = new RepositorioContatoJDBC();
 	}
 	
-	public void cadastrarContato(Contato contato){
-		repositorioContato.cadastrar(contato);
-	}
-	
-	public void atualizarContato(Contato contato){
-		repositorioContato.atualizar(contato);
-	}
-	
-	public Contato procurarContato (Integer id){
-		return repositorioContato.procurar(id);
-	}
-	
-	
-	public boolean removerContato (Integer id){
-		if(procurarContato(id) != null){
-			return repositorioContato.remover(id);
+	public void cadastrarContato(Contato contato)throws ErrorException{
+		if(contato != null){
+			repositorioContato.cadastrar(contato);
 		}else{
-			return false;
+			throw new ErrorException("Contato nulo");
+		}
+	}
+	
+	public void atualizarContato(Contato contato) throws ErrorException{
+		if(contato.getIdContato() != null){
+			repositorioContato.atualizar(contato);
+		}else{
+			throw new ErrorException("Contato nulo");
+		}
+	}
+	
+	public Contato procurarContato (Integer id)throws ErrorException{
+		if(id != null ){
+			return repositorioContato.procurar(id);
+		}else{
+			throw new ErrorException("Id não encontrado");
+		}
+	}
+	
+	
+	public boolean removerContato (Integer id) throws ErrorException{
+		if(id != null){
+			if(procurarContato(id) != null){
+				return repositorioContato.remover(id);
+			}else{
+				return false;
+			}
+		}else{
+			throw new ErrorException("Id não localizado");
 		}
 	}
 	
@@ -37,7 +55,11 @@ public class ControladorContato {
 		return repositorioContato.listar();
 	}
 	
-	public ArrayList<Contato> listarContatoPorUsuario(Integer id){
-		return repositorioContato.listarPorUsuario(id);
+	public ArrayList<Contato> listarContatoPorUsuario(Integer id)throws ErrorException{
+		if(id !=null){
+			return repositorioContato.listarPorUsuario(id);			
+		}else{
+			throw new ErrorException("Id não localizado");
+		}
 	}
 }

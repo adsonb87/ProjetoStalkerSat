@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaRemoverBem extends JPanel {
@@ -50,16 +51,21 @@ public class TelaRemoverBem extends JPanel {
 	}
 	
 	public void removerBem(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		boolean remover = fachada.removerBem(id);
-		
-		if(remover){
-			textPane.setText("Bem removido com sucesso"); 
-		}else{
-			textPane.setText("Bem não encontrado");
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			boolean remover = fachada.removerBem(id);
+			
+			if(remover){
+				textPane.setText("Bem removido com sucesso"); 
+			}else{
+				textPane.setText("Bem não encontrado");
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		idTf.setText("");
 	}
 }

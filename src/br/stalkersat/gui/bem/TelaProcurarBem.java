@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.bem.Bem;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import javax.swing.JTextPane;
 
@@ -49,17 +50,24 @@ public class TelaProcurarBem extends JPanel {
 	}
 	
 	public void procurarBem (Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		Bem bem = fachada.procurarBem(id);
-		
-		if(bem == null){
-			textPane.setText("Bem não encontrado");
-		}else{
-			textPane.setText(bem.toString());			
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Bem bem = fachada.procurarBem(id);
+			
+			if(bem == null){
+				textPane.setText("Bem não encontrado");
+			}else{
+				textPane.setText(bem.toString());			
+			}
+			
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 				
-		limpar();
 	}
 	
 	public void limpar(){

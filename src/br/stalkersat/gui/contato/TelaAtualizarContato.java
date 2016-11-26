@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.contato.Contato;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaAtualizarContato extends JPanel {
@@ -71,13 +72,19 @@ public class TelaAtualizarContato extends JPanel {
 	}
 	
 	public void atualizarContato(){
-		Fachada fachada = Fachada.getInstance();
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Contato contato = new Contato(Integer.parseInt(idContatoTf.getText()), telefoneTf.getText(), fachada.procurarUsuario(Integer.parseInt(idUsuarioTf.getText())), fachada.procurarTipoContato(tipoContatoCb.getSelectedIndex()+1));
+			
+			fachada.atualizarContato(contato);
+
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		Contato contato = new Contato(Integer.parseInt(idContatoTf.getText()), telefoneTf.getText(), fachada.procurarUsuario(Integer.parseInt(idUsuarioTf.getText())), fachada.procurarTipoContato(tipoContatoCb.getSelectedIndex()+1));
-		
-		fachada.atualizarContato(contato);
-		
-		limpar();
 	}
 	
 	public void limpar(){

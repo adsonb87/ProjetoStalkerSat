@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.tipousuario.TipoUsuario;
 import br.stalkersat.usuario.Usuario;
@@ -101,14 +102,20 @@ public class TelaAtualizarUsuario extends JPanel {
 	}
 	
 	public void atualizarUsuario(){
-		Fachada fachada = Fachada.getInstance();
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(), loginTf.getText(), senhaTf.getText(), fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()+1));
+			usuario.setIdUsuario(Integer.parseInt(idTf.getText()));
+			
+			fachada.atualizarUsuario(usuario);
 
-		Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(), loginTf.getText(), senhaTf.getText(), fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()+1));
-		usuario.setIdUsuario(Integer.parseInt(idTf.getText()));
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		fachada.atualizarUsuario(usuario);
-		
-		limpar();
 		
 		}
 	

@@ -11,6 +11,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.contato.Contato;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaProcurarContato extends JPanel {
@@ -49,16 +50,23 @@ public class TelaProcurarContato extends JPanel {
 	}
 	
 	public void procurarContato(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Contato contato = fachada.procurarContato(Integer.parseInt(idTf.getText()));
-		
-		if(contato == null){
-			textPane.setText("Contato não encontrado");
-		}else{
-			textPane.setText(contato.toString());
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Contato contato = fachada.procurarContato(Integer.parseInt(idTf.getText()));
+
+			if(contato == null){
+				textPane.setText("Contato não encontrado");
+			}else{
+				textPane.setText(contato.toString());
+			}
+
+			idTf.setText("");
+		} catch (NumberFormatException | ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		idTf.setText("");
+		
 	}
 }

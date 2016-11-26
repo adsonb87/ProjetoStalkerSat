@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.contato.Contato;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaListarContatoCliente extends JPanel {
@@ -50,17 +51,23 @@ public class TelaListarContatoCliente extends JPanel {
 	}
 	
 	public void listarContatos(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		ArrayList<Contato> lista = fachada.listarContatoPorUsuario(id);
-		
-		if(lista.isEmpty()){
-			textPane.setText("Lista vazia");
-		}else{
-			textPane.setText(lista.toString());
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			ArrayList<Contato> lista = fachada.listarContatoPorUsuario(id);
+
+			if(lista.isEmpty()){
+				textPane.setText("Lista vazia");
+			}else{
+				textPane.setText(lista.toString());
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		idTf.setText("");
 	}
 
 }

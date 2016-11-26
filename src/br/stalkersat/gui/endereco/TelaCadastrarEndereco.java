@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaCadastrarEndereco extends JPanel {
@@ -87,13 +88,18 @@ public class TelaCadastrarEndereco extends JPanel {
 	}
 	
 	public void cadastrarEndereco(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Endereco endereco = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
-		
-		fachada.cadastrarEndereco(endereco);
-		
-		limpar();
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Endereco endereco = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
+			
+			fachada.cadastrarEndereco(endereco);
+			
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void limpar(){

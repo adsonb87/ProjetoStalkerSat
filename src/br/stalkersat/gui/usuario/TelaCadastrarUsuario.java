@@ -19,6 +19,7 @@ import javax.swing.border.TitledBorder;
 import br.stalkersat.bem.Bem;
 import br.stalkersat.contato.Contato;
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 
@@ -261,49 +262,54 @@ public class TelaCadastrarUsuario extends JPanel {
 	}
 	
 	private void gravarUsuario(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Endereco endereco = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
-		
-		fachada.cadastrarEndereco(endereco);
-		
-		ArrayList<Endereco> listaEndereco = fachada.listarEndereco();
-		
-		int indice = 0;
-		
-		for(int i=0;i<listaEndereco.size();i++){
-			if(listaEndereco.get(i).getRua().equals(endereco.getRua())){
-				if(listaEndereco.get(i).getNumero().equalsIgnoreCase(endereco.getNumero())){
-					indice = listaEndereco.get(i).getIdEndereco();			
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Endereco endereco = new Endereco(numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
+			
+			fachada.cadastrarEndereco(endereco);
+			
+			ArrayList<Endereco> listaEndereco = fachada.listarEndereco();
+			
+			int indice = 0;
+			
+			for(int i=0;i<listaEndereco.size();i++){
+				if(listaEndereco.get(i).getRua().equals(endereco.getRua())){
+					if(listaEndereco.get(i).getNumero().equalsIgnoreCase(endereco.getNumero())){
+						indice = listaEndereco.get(i).getIdEndereco();			
+					}
 				}
 			}
-		}
-		
-		
-		Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(),loginTf.getText(),senhaTf.getText(),fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()+1));
-		usuario.setEndereco(fachada.procurarEndereco(indice));
-		
-		fachada.cadastrarUsuario(usuario);
-		
-		ArrayList<Usuario> listaUsuario = fachada.listarUsuario();
-		
-		int indiceUsuario = 0;
-		
-		for(int i=0; i<listaUsuario.size();i++){
-			if(listaUsuario.get(i).getCpf().equalsIgnoreCase(usuario.getCpf())){
-				indiceUsuario = listaUsuario.get(i).getIdUsuario();
+			
+			
+			Usuario usuario = new Usuario(cpfTf.getText(), nomeTf.getText(),loginTf.getText(),senhaTf.getText(),fachada.procurarTipoUsuario(tipoUsuarioCB.getSelectedIndex()+1));
+			usuario.setEndereco(fachada.procurarEndereco(indice));
+			
+			fachada.cadastrarUsuario(usuario);
+			
+			ArrayList<Usuario> listaUsuario = fachada.listarUsuario();
+			
+			int indiceUsuario = 0;
+			
+			for(int i=0; i<listaUsuario.size();i++){
+				if(listaUsuario.get(i).getCpf().equalsIgnoreCase(usuario.getCpf())){
+					indiceUsuario = listaUsuario.get(i).getIdUsuario();
+				}
 			}
+			
+			Contato contato = new Contato(telefoneTf.getText(), fachada.procurarUsuario(indiceUsuario), fachada.procurarTipoContato(tipoContatoCB.getSelectedIndex()+1));
+			
+			fachada.cadastrarContato(contato);
+			
+			Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(tipoBemCB.getSelectedIndex()+1), fachada.procurarUsuario(indiceUsuario));
+			
+			fachada.cadastrarBem(bem);
+			
+			limparCampos();	
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		Contato contato = new Contato(telefoneTf.getText(), fachada.procurarUsuario(indiceUsuario), fachada.procurarTipoContato(tipoContatoCB.getSelectedIndex()+1));
-		
-		fachada.cadastrarContato(contato);
-		
-		Bem bem = new Bem(chassiTf.getText(), placaTf.getText(), fachada.procurarTipoBem(tipoBemCB.getSelectedIndex()+1), fachada.procurarUsuario(indiceUsuario));
-		
-		fachada.cadastrarBem(bem);
-		
-		limparCampos();	
 	}
 		
 	private void limparCampos(){

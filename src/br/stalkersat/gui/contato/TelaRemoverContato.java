@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaRemoverContato extends JPanel {
@@ -48,17 +49,24 @@ public class TelaRemoverContato extends JPanel {
 	}
 	
 	public void removerContato(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		boolean remover = fachada.removerContato(id);
-		
-		if(remover){
-			textPane.setText("Contato removido com sucesso");
-		}else{
-			textPane.setText("Contato não encontrado");
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			boolean remover = fachada.removerContato(id);
+
+			if(remover){
+				textPane.setText("Contato removido com sucesso");
+			}else{
+				textPane.setText("Contato não encontrado");
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		idTf.setText("");
+		
 	}
 
 }

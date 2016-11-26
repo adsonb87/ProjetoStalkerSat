@@ -3,6 +3,7 @@ package br.stalkersat.gui.usuario;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 
@@ -59,15 +60,23 @@ public class TelaProcurarUsuario extends JPanel {
 	}
 	
 	public void procurarUsuario(int id){
-		Fachada fachada = Fachada.getInstance();
-		
-		Usuario usuario = fachada.procurarUsuario(id);
-		
-		if(usuario == null){
-			textPane.setText("Usuario Não encontrado");
-		}else{
-			textPane.setText(usuario.toString());
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Usuario usuario = fachada.procurarUsuario(id);
+			
+			if(usuario == null){
+				textPane.setText("Usuario Não encontrado");
+			}else{
+				textPane.setText(usuario.toString());
+			}
+			
+			limparCampo();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
 	public void limparCampo(){

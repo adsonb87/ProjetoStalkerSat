@@ -1,10 +1,11 @@
 package br.stalkersat.gui;
 
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -32,8 +33,6 @@ import br.stalkersat.gui.usuario.TelaCadastrarUsuario;
 import br.stalkersat.gui.usuario.TelaListarUsuario;
 import br.stalkersat.gui.usuario.TelaProcurarUsuario;
 import br.stalkersat.gui.usuario.TelaRemoverUsuario;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 public class TelaPrincipalAdministrador extends JPanel {
 	private JFrame frame = new JFrame();
@@ -53,7 +52,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 		
 		JMenuItem CadastrarUsuario = new JMenuItem("Cadastrar");
 		CadastrarUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {			
 				TelaCadastrarUsuario tCadastrarUsuario = new TelaCadastrarUsuario();				
 				
 				frame.setBounds(100, 100, 740, 590);

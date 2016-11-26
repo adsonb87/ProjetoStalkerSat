@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.bem.Bem;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaListarBemCliente extends JPanel {
@@ -49,16 +50,21 @@ public class TelaListarBemCliente extends JPanel {
 	}
 	
 	public void listarBens(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		ArrayList<Bem> listaBem = fachada.listarBemPorUsuario(id);
-		
-		if(listaBem.isEmpty()){
-			textPane.setText("Lista vazia");
-		}else{
-			textPane.setText(listaBem.toString());
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			ArrayList<Bem> listaBem = fachada.listarBemPorUsuario(id);
+			if(listaBem.isEmpty()){
+				textPane.setText("Lista vazia");
+			}else{
+				textPane.setText(listaBem.toString());
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		idTf.setText("");
 	}
 }

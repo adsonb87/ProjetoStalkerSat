@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaAtualizarEndereco extends JPanel {
@@ -92,13 +93,18 @@ public class TelaAtualizarEndereco extends JPanel {
 	}
 	
 	public void atualizarEndereco(){
-		Fachada fachada = Fachada.getInstance();
-		
-		Endereco endereco = new Endereco(Integer.parseInt(idTf.getText()), numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
-		
-		fachada.atualizarEndereco(endereco);
-		
-		limpar();
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Endereco endereco = new Endereco(Integer.parseInt(idTf.getText()), numeroTf.getText(), complementoTf.getText(), ruaTf.getText(), cepTf.getText());
+			
+			fachada.atualizarEndereco(endereco);
+			
+			limpar();
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void limpar(){

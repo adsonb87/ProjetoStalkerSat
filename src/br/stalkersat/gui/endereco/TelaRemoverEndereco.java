@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaRemoverEndereco extends JPanel {
@@ -47,16 +48,21 @@ public class TelaRemoverEndereco extends JPanel {
 	}
 	
 	public void removerEndereco(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		boolean remover = fachada.removerEndereco(id);
-		
-		if(remover){
-			textPane.setText("Endereco removido com sucesso");
-		}else{
-			textPane.setText("Endereco não encontrado");
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			boolean	remover = fachada.removerEndereco(id);
+			
+			if(remover){
+				textPane.setText("Endereco removido com sucesso");
+			}else{
+				textPane.setText("Endereco não encontrado");
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		idTf.setText("");
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.endereco.Endereco;
+import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 
 public class TelaProcurarEndereco extends JPanel {
@@ -49,17 +50,24 @@ public class TelaProcurarEndereco extends JPanel {
 	}
 	
 	public void procurarEndereco(Integer id){
-		Fachada fachada = Fachada.getInstance();
-		
-		Endereco endereco = fachada.procurarEndereco(id);
-		
-		if(endereco == null){
-			textPane.setText("Endereco não encontrado");
-		}else{
-			textPane.setText(endereco.toString());
+		try {
+			Fachada fachada = Fachada.getInstance();
+			
+			Endereco endereco = fachada.procurarEndereco(id);
+			
+			if(endereco == null){
+				textPane.setText("Endereco não encontrado");
+			}else{
+				textPane.setText(endereco.toString());
+			}
+			
+			idTf.setText("");
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		idTf.setText("");
+		
 	}
 
 }
