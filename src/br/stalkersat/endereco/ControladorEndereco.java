@@ -20,7 +20,7 @@ public class ControladorEndereco {
 		if(endereco !=null){
 			repositorioEndereco.cadastrar(endereco);
 		}else{
-			throw new ErrorException("EndereÁo nulo");
+			throw new ErrorException("Endere√ßo nulo");
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class ControladorEndereco {
 		if(endereco.getIdEndereco() != null){
 			repositorioEndereco.atualizar(endereco);
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class ControladorEndereco {
 				return false;
 			}
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class ControladorEndereco {
 		if(id != null){
 			return repositorioEndereco.procurar(id);
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	

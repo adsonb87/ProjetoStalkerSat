@@ -53,7 +53,7 @@ public class TelaLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\adson\\Google Drive\\Projeto 4 periodo montadora\\StalkerSAT-transp2.png"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("/br/stalkersat/util/StalkerSAT-transp2.png"));
 		frame.setBounds(100, 100, 395, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

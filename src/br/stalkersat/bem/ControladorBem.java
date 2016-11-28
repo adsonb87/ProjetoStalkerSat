@@ -33,7 +33,7 @@ public class ControladorBem {
 		if(id!=null){
 			return repositorioBem.procurar(id);
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class ControladorBem {
 				return false;
 			}
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class ControladorBem {
 		if(id != null){
 			return repositorioBem.listarPorUsuario(id);
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 }

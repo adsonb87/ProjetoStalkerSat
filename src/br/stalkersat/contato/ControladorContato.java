@@ -34,7 +34,7 @@ public class ControladorContato {
 		if(id != null ){
 			return repositorioContato.procurar(id);
 		}else{
-			throw new ErrorException("Id n„o encontrado");
+			throw new ErrorException("Id n√£o encontrado");
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class ControladorContato {
 				return false;
 			}
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class ControladorContato {
 		if(id !=null){
 			return repositorioContato.listarPorUsuario(id);			
 		}else{
-			throw new ErrorException("Id n„o localizado");
+			throw new ErrorException("Id n√£o localizado");
 		}
 	}
 }

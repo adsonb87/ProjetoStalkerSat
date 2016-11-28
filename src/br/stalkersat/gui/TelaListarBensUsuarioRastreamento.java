@@ -56,7 +56,7 @@ public class TelaListarBensUsuarioRastreamento extends JPanel {
 			ArrayList<Bem> listaBens = fachada.listarBemPorUsuario(id);
 			
 			if(listaBens.isEmpty()){
-				textPane.setText("Bens n„o localizados");
+				textPane.setText("Bens n√£o localizados");
 			}else{
 				textPane.setText(listaBens.toString());
 			}
