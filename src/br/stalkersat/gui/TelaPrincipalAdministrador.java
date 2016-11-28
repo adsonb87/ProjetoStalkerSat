@@ -44,7 +44,7 @@ public class TelaPrincipalAdministrador extends JPanel {
 		setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 660, 21);
+		menuBar.setBounds(0, 0, 745, 21);
 		add(menuBar);
 		
 		JMenu mnUsuario = new JMenu("Usuario");

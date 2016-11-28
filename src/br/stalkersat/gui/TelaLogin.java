@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaLogin {
 
@@ -79,31 +80,31 @@ public class TelaLogin {
 		label.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/stalkersat/util/StalkerSAT-transp.png")));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblSenha)
 								.addComponent(lblLogin))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(157)
-							.addComponent(btnLogin)))
-					.addContainerGap(254, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(24, Short.MAX_VALUE)
-					.addComponent(label)
-					.addGap(20))
+								.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(28, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(160, Short.MAX_VALUE)
+					.addComponent(btnLogin)
+					.addGap(156))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGap(28)
+					.addComponent(label)
+					.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblLogin)
 						.addComponent(loginTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -111,11 +112,9 @@ public class TelaLogin {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSenha)
 						.addComponent(senhaTF, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addGap(35)
+					.addGap(32)
 					.addComponent(btnLogin)
-					.addGap(28)
-					.addComponent(label)
-					.addContainerGap(48, Short.MAX_VALUE))
+					.addGap(36))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
@@ -156,7 +155,7 @@ public class TelaLogin {
 		}
 		
 		if(login == true){
-			JOptionPane.showMessageDialog(frame, "Senha ou Login invalidos");
+			JOptionPane.showMessageDialog(frame, "Senha ou Login inválidos");
 		}	
 	}
 }
