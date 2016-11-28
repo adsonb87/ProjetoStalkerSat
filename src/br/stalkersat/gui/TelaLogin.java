@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -120,6 +121,9 @@ public class TelaLogin {
 	}
 	
 	private void fazerLogin(){
+		
+		boolean login = false;
+		
 		Fachada fachada = Fachada.getInstance();
 		
 		ArrayList<Usuario> lista = fachada.listarUsuario();
@@ -128,6 +132,7 @@ public class TelaLogin {
 			if(lista.get(i).getLogin().equalsIgnoreCase(loginTF.getText())){
 				if(lista.get(i).getSenha().equalsIgnoreCase(senhaTF.getText())){
 					if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 1){
+						login = false;
 						TelaPrincipalAdministrador tPrincipalAdministrador = new TelaPrincipalAdministrador();
 						
 						frame.setBounds(100, 100, 740, 440);
@@ -135,7 +140,7 @@ public class TelaLogin {
 						frame.getContentPane().revalidate();
 						frame.setVisible(true);		
 						}else if(lista.get(i).getTipoUsuario().getIdTipoUsuario() == 2){
-							
+						login = false;
 						TelaRastreamentoCliente telaRastreamentoCliente = new TelaRastreamentoCliente();
 						
 						telaRastreamentoCliente.setIdUsuario(lista.get(i).getIdUsuario());
@@ -147,10 +152,11 @@ public class TelaLogin {
 					}
 				}
 			}
+			login = true;
 		}
 		
-//		JOptionPane.showConfirmDialog(null, "Usuario não localizado");
-		
-		
+		if(login == true){
+			JOptionPane.showMessageDialog(frame, "Senha ou Login invalidos");
+		}	
 	}
 }

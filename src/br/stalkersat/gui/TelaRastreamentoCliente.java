@@ -1,12 +1,13 @@
 package br.stalkersat.gui;
 
-import java.awt.TexturePaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -16,7 +17,6 @@ import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.localizacao.Localizacao;
-import br.stalkersat.usuario.Usuario;
 
 public class TelaRastreamentoCliente extends JPanel {
 	private JTextField idTf;
@@ -53,12 +53,30 @@ public class TelaRastreamentoCliente extends JPanel {
 				rastrearBem(Integer.parseInt(idTf.getText()));
 			}
 		});
-		btnRastrear.setBounds(313, 90, 89, 23);
+		btnRastrear.setBounds(321, 98, 89, 23);
 		add(btnRastrear);
 		
 		
 		textPane.setBounds(10, 132, 720, 297);
 		add(textPane);
+		
+		JButton btnListarBens = new JButton("Listar bens");
+		btnListarBens.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaListarBensUsuarioRastreamento tListar = new TelaListarBensUsuarioRastreamento();
+				
+				tListar.setIdUsuario(idUsuario);
+				
+				JFrame frame = new JFrame();
+				
+				frame.setBounds(100, 100, 740, 440);
+				frame.setContentPane(tListar);
+				frame.getContentPane().revalidate();
+				frame.setVisible(true);
+			}
+		});
+		btnListarBens.setBounds(308, 20, 118, 23);
+		add(btnListarBens);
 
 	}
 	
@@ -73,17 +91,18 @@ public class TelaRastreamentoCliente extends JPanel {
 			Bem bem = fachada.procurarBem(idBem);
 			
 			if(bem == null){
-				textPane.setText("Bem não existe");
+				textPane.setText("Bem " + idBem + " não existe");
 			}else if(bem.getUsuario().getIdUsuario() == idUsuario){
 				textPane.setText(bem.toString() + localizacao.toString());
 			}else{
-				textPane.setText("Bem não pertence ao cliente");
+				textPane.setText("Bem " + idBem + " não pertence ao cliente");
 			}
 			
 		} catch (ErrorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+		idTf.setText("");
 	}
 	
 	

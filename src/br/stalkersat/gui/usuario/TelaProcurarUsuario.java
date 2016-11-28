@@ -8,6 +8,7 @@ import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
@@ -26,11 +27,11 @@ public class TelaProcurarUsuario extends JPanel {
 		setLayout(null);
 		
 		JLabel lblIdUsuario = new JLabel("Id Usuario:");
-		lblIdUsuario.setBounds(10, 33, 58, 14);
+		lblIdUsuario.setBounds(10, 33, 71, 14);
 		add(lblIdUsuario);
 		
 		idTf = new JTextField();
-		idTf.setBounds(67, 30, 86, 20);
+		idTf.setBounds(71, 30, 86, 20);
 		add(idTf);
 		idTf.setColumns(10);
 		
@@ -71,15 +72,15 @@ public class TelaProcurarUsuario extends JPanel {
 				textPane.setText(usuario.toString());
 			}
 			
-			limparCampo();
+			idTf.setText("");
 		} catch (ErrorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		
 	}
 	
 	public void limparCampo(){
+		idTf.setText("");
 		textPane.setText("");
 	}
 }

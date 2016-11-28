@@ -8,6 +8,7 @@ import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -66,8 +67,7 @@ public class TelaRemoverUsuario extends JPanel {
 			
 			idTf.setText("");
 		} catch (ErrorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 }
