@@ -1,5 +1,6 @@
 package br.stalkersat.gui;
 
+import java.awt.TexturePaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -15,6 +16,7 @@ import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.localizacao.Localizacao;
+import br.stalkersat.usuario.Usuario;
 
 public class TelaRastreamentoCliente extends JPanel {
 	private JTextField idTf;
@@ -65,16 +67,19 @@ public class TelaRastreamentoCliente extends JPanel {
 			Integer idLocalizacao = sortearLocalizacao();
 			
 			Fachada fachada = Fachada.getInstance();
-			
+						
 			Localizacao localizacao = fachada.procurarLocalizacao(idLocalizacao);
 			
 			Bem bem = fachada.procurarBem(idBem);
 			
 			if(bem == null){
 				textPane.setText("Bem não existe");
-			}else {
+			}else if(bem.getUsuario().getIdUsuario() == idUsuario){
 				textPane.setText(bem.toString() + localizacao.toString());
+			}else{
+				textPane.setText("Bem não pertence ao cliente");
 			}
+			
 		} catch (ErrorException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
