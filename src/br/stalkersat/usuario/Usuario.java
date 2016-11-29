@@ -122,11 +122,16 @@ public class Usuario {
 	public ArrayList<Bem> listarBens(){
 		return listaBens;
 	}
+	
+	public boolean getPermissaoDeAcesso(){
+		return true;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", cpf=" + cpf + ", nome=" + nome + ", login=" + login + ", senha="
-				+ senha + ", tipoUsuario=" + tipoUsuario.getTipo() + ", \n endereco=" + endereco + "]\n\n";
+		return "\nId Usuario: " + idUsuario + "\nCpf: " + cpf + "\nNome: " + nome + "\nLogin: " + login + "\nSenha: "
+				+ senha + "\nTipo Usuario: " + tipoUsuario.getTipo() + 
+				"\nEndereco: " + endereco.getRua() + ",Nº " + endereco.getNumero() + ", " + endereco.getComplemento() + ",Cep: " + endereco.getCep() + "\n";
 	}
 	
 }

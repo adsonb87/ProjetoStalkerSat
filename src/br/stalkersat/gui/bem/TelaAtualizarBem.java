@@ -15,13 +15,15 @@ import javax.swing.border.TitledBorder;
 import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JTextPane;
 
 public class TelaAtualizarBem extends JPanel {
 	private JTextField idBemTf;
 	private JTextField idUsuarioTf;
 	private JTextField chassiTf;
 	private JTextField placaTf;
-	JComboBox comboBox = new JComboBox();
+	private JComboBox comboBox = new JComboBox();
+	private JTextPane statusTp = new JTextPane();
 
 	/**
 	 * Create the panel.
@@ -80,14 +82,20 @@ public class TelaAtualizarBem extends JPanel {
 		btnGravar.setBounds(157, 243, 89, 23);
 		add(btnGravar);
 		
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.addActionListener(new ActionListener() {
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limpar();
+				if(!idBemTf.getText().isEmpty()){
+					procurarBem();
+				}
 			}
 		});
-		btnLimpar.setBounds(372, 243, 89, 23);
-		add(btnLimpar);
+		btnPesquisar.setBounds(308, 243, 89, 23);
+		add(btnPesquisar);
+		
+		
+		statusTp.setBounds(76, 170, 157, 23);
+		add(statusTp);
 
 	}
 	
@@ -101,6 +109,28 @@ public class TelaAtualizarBem extends JPanel {
 			
 			limpar();
 		} catch (ErrorException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+	}
+	
+	public void procurarBem(){
+		Fachada fachada = Fachada.getInstance();
+		
+		try {
+			Bem bem = fachada.procurarBem(Integer.parseInt(idBemTf.getText()));
+			
+			if(bem != null){
+				statusTp.setText("");
+				idBemTf.setText(bem.getIdBem().toString());
+				idUsuarioTf.setText(bem.getUsuario().getIdUsuario().toString());
+				placaTf.setText(bem.getPlaca().toString());
+				chassiTf.setText(bem.getChassi().toString());
+			}else{
+				statusTp.setText("Bem não existe");
+				limpar();
+			}
+			
+		} catch (NumberFormatException | ErrorException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}

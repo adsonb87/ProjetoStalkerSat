@@ -15,26 +15,29 @@ import javax.swing.border.TitledBorder;
 import br.stalkersat.contato.Contato;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JTextPane;
 
 public class TelaAtualizarContato extends JPanel {
 	private JTextField idUsuarioTf;
 	private JTextField idContatoTf;
 	private JTextField telefoneTf;
-	JComboBox tipoContatoCb = new JComboBox();
+	private JComboBox tipoContatoCb = new JComboBox();
+	private JTextPane statusTp = new JTextPane();
 	
 	/**
 	 * Create the panel.
 	 */
-	public TelaAtualizarContato() {
+	public TelaAtualizarContato() {	
+		
 		setBorder(new TitledBorder(null, "Atualizar Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(null);
 		
 		JLabel lblIdUsuario = new JLabel("Id Usuario:");
-		lblIdUsuario.setBounds(10, 26, 74, 14);
+		lblIdUsuario.setBounds(10, 56, 74, 14);
 		add(lblIdUsuario);
 		
 		JLabel lblIdContato = new JLabel("Id Contato:");
-		lblIdContato.setBounds(10, 56, 74, 14);
+		lblIdContato.setBounds(10, 26, 74, 14);
 		add(lblIdContato);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
@@ -47,12 +50,12 @@ public class TelaAtualizarContato extends JPanel {
 		add(tipoContatoCb);
 		
 		idUsuarioTf = new JTextField();
-		idUsuarioTf.setBounds(83, 23, 86, 20);
+		idUsuarioTf.setBounds(83, 53, 86, 20);
 		add(idUsuarioTf);
 		idUsuarioTf.setColumns(10);
 		
 		idContatoTf = new JTextField();
-		idContatoTf.setBounds(83, 53, 86, 20);
+		idContatoTf.setBounds(83, 23, 86, 20);
 		add(idContatoTf);
 		idContatoTf.setColumns(10);
 		
@@ -67,9 +70,26 @@ public class TelaAtualizarContato extends JPanel {
 				atualizarContato();
 			}
 		});
-		btnAtualiar.setBounds(332, 178, 89, 23);
+		btnAtualiar.setBounds(158, 179, 89, 23);
 		add(btnAtualiar);
-
+		
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(idContatoTf.getText().isEmpty()){
+					
+				}else{
+					procurarContato();
+				}
+			}
+		});
+		btnPesquisar.setBounds(330, 179, 110, 23);
+		add(btnPesquisar);
+		
+		
+		statusTp.setBounds(121, 131, 226, 20);
+		add(statusTp);
+		
 	}
 	
 	public void atualizarContato(){
@@ -87,10 +107,31 @@ public class TelaAtualizarContato extends JPanel {
 		
 	}
 	
+	public void procurarContato(){		
+			try {
+				Fachada fachada = Fachada.getInstance();
+				
+				Contato contato = fachada.procurarContato(Integer.parseInt(idContatoTf.getText()));
+				
+				if(contato != null){
+					statusTp.setText("");
+					idUsuarioTf.setText(contato.getUsuario().getIdUsuario().toString());
+					telefoneTf.setText(contato.getTelefone().toString());					
+				}else{
+					statusTp.setText("Contato não existe");
+					limpar();
+				}
+				
+				
+			} catch (ErrorException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		
+	}
+	
 	public void limpar(){
 		idContatoTf.setText("");
 		idUsuarioTf.setText("");
 		telefoneTf.setText("");
 	}
-
 }

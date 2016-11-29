@@ -36,7 +36,7 @@ public class TipoBem {
 
 	@Override
 	public String toString() {
-		return "TipoBem [idTipoBem=" + idTipoBem + ", tipo=" + tipo + "]";
+		return "\nId TipoBem: " + idTipoBem + ", Tipo: " + tipo + "\n";
 	}
 	
 }

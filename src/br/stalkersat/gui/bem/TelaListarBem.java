@@ -11,10 +11,11 @@ import javax.swing.border.TitledBorder;
 
 import br.stalkersat.bem.Bem;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaListarBem extends JPanel {
-	JTextPane textPane = new JTextPane();
-	
+	private JTextArea textArea = new JTextArea();
 	/**
 	 * Create the panel.
 	 */
@@ -31,9 +32,12 @@ public class TelaListarBem extends JPanel {
 		btnListar.setBounds(300, 32, 89, 23);
 		add(btnListar);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 75, 720, 354);
+		add(scrollPane);
 		
-		textPane.setBounds(10, 80, 720, 323);
-		add(textPane);
+		
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -44,9 +48,9 @@ public class TelaListarBem extends JPanel {
 		
 		
 		if(!listaBens.isEmpty()){
-			textPane.setText(listaBens.toString());		
+			textArea.setText(listaBens.toString());		
 		}else{
-			textPane.setText("Lista de bens Vazia");
+			textArea.setText("Lista de bens Vazia");
 		}
 	}
 

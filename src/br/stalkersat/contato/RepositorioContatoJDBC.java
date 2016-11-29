@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.naming.spi.DirStateFactory.Result;
 
 import br.stalkersat.conexao.Conexao;
+import br.stalkersat.conexao.ConnectionFactory;
 import br.stalkersat.tipocontato.RepositorioTipoContatoJDBC;
 import br.stalkersat.usuario.RepositorioUsuarioJDBC;
 

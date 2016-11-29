@@ -83,8 +83,8 @@ public class Bem {
 	
 	@Override
 	public String toString() {
-		return "Bem [idBem=" + idBem + ", usuario=" + usuario.getNome() + ", chassi=" + chassi + ", placa=" + placa + ", tipoBem="
-				+ tipoBem.getTipo() + "]\n";
+		return "\nId Bem: " + idBem + "\nUsuario: " + usuario.getIdUsuario() + " - " + usuario.getNome() + "\nChassi: " + chassi + "\nPlaca: " + placa + "\nTipo do Bem: "
+				+ tipoBem.getTipo() + "\n";
 	}
 	
 	

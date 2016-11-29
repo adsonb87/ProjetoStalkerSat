@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.CellRendererPane;
 import javax.swing.JButton;
@@ -14,17 +15,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JFormattedTextField;
 
 public class TelaCadastrarEndereco extends JPanel {
 	private JTextField ruaTf;
 	private JTextField numeroTf;
 	private JTextField complementoTf;
-	private JTextField cepTf;
-
+	private JFormattedTextField cepTf = new JFormattedTextField();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -63,11 +66,6 @@ public class TelaCadastrarEndereco extends JPanel {
 		add(complementoTf);
 		complementoTf.setColumns(10);
 		
-		cepTf = new JTextField();
-		cepTf.setBounds(98, 105, 86, 20);
-		add(cepTf);
-		cepTf.setColumns(10);
-		
 		JButton btnGravar = new JButton("Gravar");
 		btnGravar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,7 +83,20 @@ public class TelaCadastrarEndereco extends JPanel {
 		});
 		btnLimpar.setBounds(356, 167, 89, 23);
 		add(btnLimpar);
-
+		
+		
+		cepTf.setBounds(99, 105, 106, 20);
+		add(cepTf);
+		
+		MaskFormatter mf2;
+		try {
+			mf2 = new MaskFormatter("##.###-###");
+			mf2.install(cepTf);
+			add(cepTf);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public void cadastrarEndereco(){

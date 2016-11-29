@@ -11,10 +11,12 @@ import javax.swing.border.TitledBorder;
 
 import br.stalkersat.contato.Contato;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaListarContato extends JPanel {
-	JTextPane textPane = new JTextPane();
-
+	private JTextArea textArea = new JTextArea();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -31,8 +33,12 @@ public class TelaListarContato extends JPanel {
 		btnListar.setBounds(320, 47, 89, 23);
 		add(btnListar);
 		
-		textPane.setBounds(10, 93, 720, 321);
-		add(textPane);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 87, 720, 342);
+		add(scrollPane);
+		
+		
+		scrollPane.setViewportView(textArea);
 		
 	}
 	
@@ -42,9 +48,9 @@ public class TelaListarContato extends JPanel {
 		ArrayList<Contato> listaContato = fachada.listarContato();
 		
 		if(!listaContato.isEmpty()){
-			textPane.setText(listaContato.toString());		
+			textArea.setText(listaContato.toString());		
 		}else{
-			textPane.setText("Lista de contatos Vazia");
+			textArea.setText("Lista de contatos Vazia");
 		}
 	}
 

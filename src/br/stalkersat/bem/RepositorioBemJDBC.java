@@ -11,21 +11,7 @@ import br.stalkersat.tipobem.RepositorioTipoBemJDBC;
 import br.stalkersat.usuario.RepositorioUsuarioJDBC;
 
 public class RepositorioBemJDBC implements IRepostorioBem{
-	
-//	private Connection con;
-//	
-//	public RepositorioBemJDBC() {
-//		try {
-//			con = Conexao.getConnection();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	
+
 	public RepositorioBemJDBC() {
 		// TODO Auto-generated constructor stub
 	}

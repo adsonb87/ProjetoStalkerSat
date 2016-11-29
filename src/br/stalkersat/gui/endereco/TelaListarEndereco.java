@@ -11,9 +11,12 @@ import javax.swing.border.TitledBorder;
 
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaListarEndereco extends JPanel {
-	JTextPane textPane = new JTextPane();
+	private JTextArea textArea = new JTextArea();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -30,9 +33,12 @@ public class TelaListarEndereco extends JPanel {
 		btnListar.setBounds(305, 40, 89, 23);
 		add(btnListar);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 85, 720, 344);
+		add(scrollPane);
 		
-		textPane.setBounds(10, 84, 720, 330);
-		add(textPane);
+		
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -42,9 +48,9 @@ public class TelaListarEndereco extends JPanel {
 		ArrayList<Endereco> listaEndereco = fachada.listarEndereco();
 		
 		if(listaEndereco.isEmpty()){
-			textPane.setText("lista de endereços vazia");
+			textArea.setText("lista de endereços vazia");
 		}else{
-			textPane.setText(listaEndereco.toString());
+			textArea.setText(listaEndereco.toString());
 		}
 	}
 

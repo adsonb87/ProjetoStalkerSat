@@ -1,30 +1,29 @@
 package br.stalkersat.gui.usuario;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
+import javax.swing.JTextPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 public class TelaListarUsuario extends JPanel {
-	private JTextPane textPane;
-
+	private JTextArea textArea = new JTextArea();
 	/**
 	 * Create the panel.
 	 */
@@ -32,38 +31,20 @@ public class TelaListarUsuario extends JPanel {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Listar Usuario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.setBounds(319, 59, 72, 23);
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listarUsuarios();
 			}
 		});
+		setLayout(null);
+		add(btnListar);
 		
-		textPane = new JTextPane();
-		textPane.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 93, 720, 436);
+		add(scrollPane);	
 		
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(307)
-							.addComponent(btnListar))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 705, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(43)
-					.addComponent(btnListar)
-					.addGap(18)
-					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(22, Short.MAX_VALUE))
-		);
-		setLayout(groupLayout);
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -71,9 +52,9 @@ public class TelaListarUsuario extends JPanel {
 		Fachada fachada = Fachada.getInstance();
 		ArrayList<Usuario> lista = fachada.listarUsuario();
 		if(!lista.isEmpty()){
-			textPane.setText(lista.toString());	
+			textArea.setText(lista.toString());
 		}else{
-			textPane.setText("Não há usuários para serem listados");
+			textArea.setText("Não há usuários para serem listados");
 		}
 	}
 }

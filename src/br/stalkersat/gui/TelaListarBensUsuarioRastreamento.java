@@ -13,10 +13,12 @@ import javax.swing.border.TitledBorder;
 import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaListarBensUsuarioRastreamento extends JPanel {
 	private Integer idUsuario;
-	JTextPane textPane = new JTextPane();
+	private JTextArea textArea = new JTextArea();
 	
 	public Integer getIdUsuario(){
 		return idUsuario;
@@ -42,9 +44,12 @@ public class TelaListarBensUsuarioRastreamento extends JPanel {
 		btnListar.setBounds(323, 50, 89, 23);
 		add(btnListar);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 90, 720, 339);
+		add(scrollPane);
 		
-		textPane.setBounds(10, 99, 720, 330);
-		add(textPane);
+		
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -56,9 +61,9 @@ public class TelaListarBensUsuarioRastreamento extends JPanel {
 			ArrayList<Bem> listaBens = fachada.listarBemPorUsuario(id);
 			
 			if(listaBens.isEmpty()){
-				textPane.setText("Bens não localizados");
+				textArea.setText("Bens não localizados");
 			}else{
-				textPane.setText(listaBens.toString());
+				textArea.setText(listaBens.toString());
 			}
 			
 		} catch (ErrorException e) {

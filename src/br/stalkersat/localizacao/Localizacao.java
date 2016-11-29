@@ -49,7 +49,7 @@ public class Localizacao {
 
 	@Override
 	public String toString() {
-		return "Localizacao [idLocalizacao=" + idLocalizacao + ", latitude=" + latitude + ", longitude=" + longitude + "]\n";
+		return "\nLatitude: " + latitude + " / Longitude: " + longitude + "\n";
 	}
 	
 	

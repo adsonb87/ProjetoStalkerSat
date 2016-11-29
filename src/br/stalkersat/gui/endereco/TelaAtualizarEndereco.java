@@ -2,6 +2,7 @@ package br.stalkersat.gui.endereco;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,17 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.stalkersat.endereco.Endereco;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JFormattedTextField;
 
 public class TelaAtualizarEndereco extends JPanel {
 	private JTextField idTf;
 	private JTextField ruaTf;
 	private JTextField numeroTf;
 	private JTextField complementoTf;
-	private JTextField cepTf;
+	private JTextField statusTp;
+	private JFormattedTextField cepTf = new JFormattedTextField();
 
 	/**
 	 * Create the panel.
@@ -41,7 +45,7 @@ public class TelaAtualizarEndereco extends JPanel {
 		add(lblNmero);
 		
 		JLabel lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(10, 114, 79, 14);
+		lblComplemento.setBounds(10, 114, 89, 14);
 		add(lblComplemento);
 		
 		JLabel lblCep = new JLabel("Cep:");
@@ -68,11 +72,6 @@ public class TelaAtualizarEndereco extends JPanel {
 		add(complementoTf);
 		complementoTf.setColumns(10);
 		
-		cepTf = new JTextField();
-		cepTf.setBounds(97, 139, 133, 20);
-		add(cepTf);
-		cepTf.setColumns(10);
-		
 		JButton btnGravar = new JButton("Gravar");
 		btnGravar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,14 +81,35 @@ public class TelaAtualizarEndereco extends JPanel {
 		btnGravar.setBounds(210, 228, 89, 23);
 		add(btnGravar);
 		
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.addActionListener(new ActionListener() {
+		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limpar();
+				if(!idTf.getText().isEmpty()){
+					procurarEndereco();
+				}
 			}
 		});
-		btnLimpar.setBounds(355, 228, 89, 23);
-		add(btnLimpar);
+		btnProcurar.setBounds(355, 228, 89, 23);
+		add(btnProcurar);
+		
+		statusTp = new JTextField();
+		statusTp.setBounds(210, 182, 229, 20);
+		add(statusTp);
+		statusTp.setColumns(10);
+		
+		
+		cepTf.setBounds(97, 139, 99, 20);
+		add(cepTf);
+		
+		MaskFormatter mf2;
+		try {
+			mf2 = new MaskFormatter("##.###-###");
+			mf2.install(cepTf);
+			add(cepTf);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 	}
 	
@@ -107,6 +127,29 @@ public class TelaAtualizarEndereco extends JPanel {
 		}
 	}
 	
+	public void procurarEndereco(){
+		Fachada fachada = Fachada.getInstance();
+		
+		try {
+			Endereco endereco = fachada.procurarEndereco(Integer.parseInt(idTf.getText()));
+			
+			if(endereco != null){
+				statusTp.setText("");
+				idTf.setText(endereco.getIdEndereco().toString());
+				numeroTf.setText(endereco.getNumero());
+				complementoTf.setText(endereco.getComplemento());
+				ruaTf.setText(endereco.getRua());
+				cepTf.setText(endereco.getCep());
+			}else{
+				statusTp.setText("Endereço não existe");
+				limpar();
+			}
+		} catch (NumberFormatException | ErrorException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+		
+	}
 	public void limpar(){
 		idTf.setText("");
 		numeroTf.setText("");

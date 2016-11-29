@@ -36,7 +36,7 @@ public class TipoContato {
 
 	@Override
 	public String toString() {
-		return "TipoContato [idTipoContato=" + idTipoContato + ", tipo=" + tipo + "]";
+		return "\nId Tipo Contato: " + idTipoContato + ", Tipo: " + tipo + "\n";
 	}
 	
 	

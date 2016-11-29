@@ -17,11 +17,13 @@ import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.localizacao.Localizacao;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaRastreamentoCliente extends JPanel {
 	private JTextField idTf;
-	private JTextPane textPane = new JTextPane();
 	private Integer idUsuario;
+	private JTextArea textArea = new JTextArea();
 	
 	public void setIdUsuario(Integer id){
 		idUsuario = id;
@@ -56,10 +58,6 @@ public class TelaRastreamentoCliente extends JPanel {
 		btnRastrear.setBounds(321, 98, 89, 23);
 		add(btnRastrear);
 		
-		
-		textPane.setBounds(10, 132, 720, 297);
-		add(textPane);
-		
 		JButton btnListarBens = new JButton("Listar bens");
 		btnListarBens.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -77,6 +75,13 @@ public class TelaRastreamentoCliente extends JPanel {
 		});
 		btnListarBens.setBounds(308, 20, 118, 23);
 		add(btnListarBens);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 138, 720, 291);
+		add(scrollPane);
+		
+		
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -91,11 +96,11 @@ public class TelaRastreamentoCliente extends JPanel {
 			Bem bem = fachada.procurarBem(idBem);
 			
 			if(bem == null){
-				textPane.setText("Bem " + idBem + " não existe");
+				textArea.setText("Bem " + idBem + " não existe");
 			}else if(bem.getUsuario().getIdUsuario() == idUsuario){
-				textPane.setText(bem.toString() + localizacao.toString());
+				textArea.setText(bem.toString() + localizacao.toString());
 			}else{
-				textPane.setText("Bem " + idBem + " não pertence ao cliente");
+				textArea.setText("Bem " + idBem + " não pertence ao cliente");
 			}
 			
 		} catch (ErrorException e) {

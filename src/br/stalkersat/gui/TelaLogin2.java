@@ -15,14 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import br.stalkersat.fachada.Fachada;
 import br.stalkersat.usuario.Usuario;
 import br.stalkersat.usuario.UsuarioProxy;
 
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-public class TelaLogin {
+public class TelaLogin2 {
 
 	private JFrame frame;
 	private JTextField loginTF;
@@ -35,7 +34,7 @@ public class TelaLogin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaLogin window = new TelaLogin();
+					TelaLogin2 window = new TelaLogin2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +46,7 @@ public class TelaLogin {
 	/**
 	 * Create the application.
 	 */
-	public TelaLogin() {
+	public TelaLogin2() {
 		initialize();
 	}
 
@@ -70,7 +69,7 @@ public class TelaLogin {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				fazerLoginProxy();
+				fazerLogin();
 			}
 		});
 		
@@ -79,7 +78,7 @@ public class TelaLogin {
 		senhaTF = new JPasswordField();
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/stalkersat/util/StalkerSAT-transp.png")));
+		label.setIcon(new ImageIcon(TelaLogin2.class.getResource("/br/stalkersat/util/StalkerSAT-transp.png")));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)

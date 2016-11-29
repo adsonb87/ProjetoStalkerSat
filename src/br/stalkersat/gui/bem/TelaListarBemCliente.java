@@ -15,10 +15,12 @@ import javax.swing.border.TitledBorder;
 import br.stalkersat.bem.Bem;
 import br.stalkersat.exceptions.ErrorException;
 import br.stalkersat.fachada.Fachada;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class TelaListarBemCliente extends JPanel {
 	private JTextField idTf;
-	private JTextPane textPane = new JTextPane();
+	private JTextArea textArea = new JTextArea();
 	/**
 	 * Create the panel.
 	 */
@@ -44,9 +46,12 @@ public class TelaListarBemCliente extends JPanel {
 		btnListar.setBounds(317, 81, 89, 23);
 		add(btnListar);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 107, 730, 431);
+		add(scrollPane);
 		
-		textPane.setBounds(10, 120, 720, 309);
-		add(textPane);
+		
+		scrollPane.setViewportView(textArea);
 
 	}
 	
@@ -56,9 +61,9 @@ public class TelaListarBemCliente extends JPanel {
 			
 			ArrayList<Bem> listaBem = fachada.listarBemPorUsuario(id);
 			if(listaBem.isEmpty()){
-				textPane.setText("Lista vazia");
+				textArea.setText("Lista vazia");
 			}else{
-				textPane.setText(listaBem.toString());
+				textArea.setText(listaBem.toString());
 			}
 			
 			idTf.setText("");
